@@ -5,6 +5,12 @@ import lombok.Data;
 @Data
 public class Player {
 
-	private String name;
-	private int rating;
+    public Player(String name, int ranking) {
+        super();
+        this.name = name;
+        this.ranking = ranking;
+    }
+    private String name;
+    private int ranking;
+    
 }

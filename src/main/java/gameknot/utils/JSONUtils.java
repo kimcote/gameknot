@@ -16,7 +16,7 @@ public class JSONUtils {
 	public List<Player> getPlayersFromTableData(String tableData) {
 		
 		List<Player> players = new ArrayList<Player>();
-		Player player = new Player();
+		Player player;
 		
 		String td=extractTableData(tableData);
 		
@@ -27,9 +27,7 @@ public class JSONUtils {
             JSONObject jsonObj = jsonArr.getJSONObject(i);
             
             if (jsonObj.get("uid").toString().startsWith("available")) {
-            	player = new Player();
-            	player.setName(jsonObj.getString("name"));
-            	player.setRating(jsonObj.getInt("rating"));
+            	player = new Player(jsonObj.getString("name"), jsonObj.getInt("rating"));
             	players.add(player);
             }
         }

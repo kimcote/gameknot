@@ -7,6 +7,11 @@ import lombok.Data;
 @Data
 public class OppositionTeam {
 
-	private String name;
-	private List<Player> players;
+    public OppositionTeam(String name, List<Player> players) {
+        super();
+        this.name = name;
+        this.players = players;
+    }
+    private String name;
+    private List<Player> players;
 }

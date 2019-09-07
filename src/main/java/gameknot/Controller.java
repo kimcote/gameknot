@@ -41,7 +41,7 @@ public class Controller {
 		
 		for (Player player:kingslayers.getPlayers()) {
 //			player=kingslayers.getPlayers().;
-			System.out.println(player.getName()+" "+player.getRating());
+			System.out.println(player.getName()+" "+player.getRanking());
 		}
 		
 //		jsonUtils.convertToArray(teamdata);
