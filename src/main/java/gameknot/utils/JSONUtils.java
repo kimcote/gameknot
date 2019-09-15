@@ -17,6 +17,7 @@ public class JSONUtils {
 		
 		List<Player> players = new ArrayList<Player>();
 		Player player;
+		boolean pending;
 		
 		String td=extractTableData(tableData);
 		
@@ -27,7 +28,13 @@ public class JSONUtils {
             JSONObject jsonObj = jsonArr.getJSONObject(i);
             
             if (jsonObj.get("uid").toString().startsWith("available")) {
-            	player = new Player(jsonObj.getString("name"), jsonObj.getInt("rating"));
+            	pending=(jsonObj.getString("activeIncludingPending").contains("+"));
+            	player = new Player(jsonObj.getString("name"), 
+            						jsonObj.getInt("rating"), 
+            						jsonObj.getString("activeIncludingPending"),
+            						pending,
+            						false);
+//            	System.out.println(jsonObj.getString("name")+ " active=" + jsonObj.getString("activeIncludingPending") + "pending="+pending);
             	players.add(player);
             }
         }
@@ -36,7 +43,7 @@ public class JSONUtils {
 	}
 	
 	private String extractTableData(String js) {
-		System.out.println(js);
+//		System.out.println(js);
 		String td=js.replace("'<img class=img-i src=\"/img/i/plus-small-circle.png\" style=\"float: right; margin: -2px 0;\">'+uid('","\"available-")
 				    .replace(":uid('", ":\"unavailable-")
 				    .replace(" (co-captain)", "")
@@ -70,15 +77,15 @@ public class JSONUtils {
 			td=td.replaceFirst("\"k\"", "\"name\"");
 			td=td.replaceFirst("\"t\"", "\"rating\"");
 			td=td.replaceFirst("\"t\"", "\"score\"");
-			td=td.replaceFirst("\"t\"", "\"active\"");
-			td=td.replaceFirst("\"k\"", "\"active2\"");
+			td=td.replaceFirst("\"t\"", "\"activeIncludingPending\"");
+			td=td.replaceFirst("\"k\"", "\"activeTotal\"");
 			td=td.replaceFirst("\"t\"", "\"link\"");
 			td=td.replaceFirst("\"k\"", "\"finished\"");
 		}
 		
-		System.out.println("");
-		System.out.println(td);
-		System.out.println("");
+//		System.out.println("");
+//		System.out.println(td);
+//		System.out.println("");
 		return td;
 	}
 	

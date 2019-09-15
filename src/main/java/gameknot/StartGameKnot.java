@@ -9,25 +9,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import gameknot.model.KingSlayers;
-import gameknot.model.OppositionTeams;
-import gameknot.process.CreateData;
-import gameknot.process.MatchPlayers;
+import gameknot.process.Controller;
 
 @SpringBootApplication
 public class StartGameKnot implements CommandLineRunner {
-    
-    @Autowired
-    private KingSlayers kingslayerPlayers;
-    
-    @Autowired
-    private OppositionTeams oppositionTeams;
-    
-    @Autowired
-    private CreateData createdata;
-    
-    @Autowired
-    private MatchPlayers matchplayers;
+	
+	@Autowired
+	private Controller controller;
 
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(StartGameKnot.class);
@@ -38,12 +26,7 @@ public class StartGameKnot implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         
-        createdata = new CreateData();
-        createdata.process(kingslayerPlayers, oppositionTeams);
-        
-        
-        matchplayers = new MatchPlayers();
-        matchplayers.process(kingslayerPlayers, oppositionTeams);
+        controller.mainProcess();
         
         exit(0);
     }

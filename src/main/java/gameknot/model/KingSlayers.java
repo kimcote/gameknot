@@ -12,4 +12,15 @@ import lombok.Data;
 public class KingSlayers {
 
     private List<Player> players;
+    
+    public int getCountPlayersAvailable() {
+		int count=0;
+		
+		for (Player player:players) {
+			
+			if (!player.isPending()) count++;
+		}
+		
+		return count;
+	}
 }

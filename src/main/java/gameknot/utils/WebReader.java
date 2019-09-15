@@ -6,15 +6,16 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Component;
 
 @Component
 public class WebReader {
 
-	public void directFromURL(String url) throws Exception {
+	public void directFromURL(String urlStr) throws Exception {
 
-		URL oracle = new URL(url);
-		BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
+		URL url = new URL(urlStr);
+		BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
 
 		String inputLine;
 		while ((inputLine = in.readLine()) != null)
@@ -22,12 +23,16 @@ public class WebReader {
 		in.close();
 	}
 
-	public String jsoup(String url) throws IOException {
+	public String jsoup(String url) throws IOException, InterruptedException {
 
-		String html = Jsoup.connect(url).get().html();
+		Thread.sleep(2000);
+		Document doc = Jsoup.connect("https://gameknot.com" + url)
+				.timeout(2000)
+				.get();
+		String html = doc.html();
 
-		System.out.println(html);
-		
+//		System.out.println(html);
+		Thread.sleep(1000);
 		return html;
 	}
 }
