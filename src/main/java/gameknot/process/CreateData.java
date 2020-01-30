@@ -1,20 +1,14 @@
 package gameknot.process;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import gameknot.model.KingSlayers;
-import gameknot.model.OppositionTeam;
-import gameknot.model.OppositionTeams;
-import gameknot.model.Player;
+import gameknot.model.Ladder;
 
 @Component
 public class CreateData {
 
-    public void process(KingSlayers kingslayerPlayers, OppositionTeams oppositionTeams) {
+    public void process(KingSlayers kingslayerPlayers, Ladder opposition) {
         
 //        List<Player> players = new ArrayList<Player>();
 //        players.add(new Player("kimcote",1600));

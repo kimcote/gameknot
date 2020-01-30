@@ -13,13 +13,17 @@ import gameknot.model.Player;
 @Component
 public class JSONUtils {
 	
-	public List<Player> getPlayersFromTableData(String tableData) {
+	public static List<Player> getPlayersFromTeamLink(String link) {	
+		String html= HTMLReader.getHTML(link);
+		String htmlTeamTableData = HTMLReader.getTeamPlayers(html);
+		return getPlayersFromTableData(htmlTeamTableData);
+	}
 		
+	public static List<Player> getPlayersFromTableData(String htmlTeamTableData) {
 		List<Player> players = new ArrayList<Player>();
 		Player player;
-		boolean pending;
 		
-		String td=extractTableData(tableData);
+		String td=extractTableData(htmlTeamTableData);
 		
 		JSONArray jsonArr = new JSONArray(td);
 
@@ -27,22 +31,20 @@ public class JSONUtils {
         {
             JSONObject jsonObj = jsonArr.getJSONObject(i);
             
-            if (jsonObj.get("uid").toString().startsWith("available")) {
-            	pending=(jsonObj.getString("activeIncludingPending").contains("+"));
-            	player = new Player(jsonObj.getString("name"), 
-            						jsonObj.getInt("rating"), 
-            						jsonObj.getString("activeIncludingPending"),
-            						pending,
-            						false);
-//            	System.out.println(jsonObj.getString("name")+ " active=" + jsonObj.getString("activeIncludingPending") + "pending="+pending);
-            	players.add(player);
-            }
+            boolean available= (jsonObj.get("uid").toString().startsWith("available"));
+            	
+        	player = new Player(jsonObj.getString("name"), 
+        						jsonObj.getInt("rating"), 
+        						jsonObj.getString("activeIncludingPending"),
+        						available);
+//            	System.out.println(player.getName()+ " active=" + player.getActive() + "pending="+player.isPending());
+        	players.add(player);
         }
 		
 		return players;
 	}
 	
-	private String extractTableData(String js) {
+	private static String extractTableData(String js) {
 //		System.out.println(js);
 		String td=js.replace("'<img class=img-i src=\"/img/i/plus-small-circle.png\" style=\"float: right; margin: -2px 0;\">'+uid('","\"available-")
 				    .replace(":uid('", ":\"unavailable-")

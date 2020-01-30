@@ -14,6 +14,13 @@ import gameknot.process.Controller;
 @SpringBootApplication
 public class StartGameKnot implements CommandLineRunner {
 	
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//		SpringApplication.run(StartGameKnot.class, args);
+//		
+//		
+//	}
+	
 	@Autowired
 	private Controller controller;
 
