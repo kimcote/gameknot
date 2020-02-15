@@ -1,5 +1,7 @@
 package gameknot.process;
 
+import java.util.Comparator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,8 +11,7 @@ import gameknot.model.MatchParameters;
 import gameknot.model.OppositionTeam;
 import gameknot.model.Player;
 import gameknot.utils.HTMLReader;
-
-
+import gameknot.utils.MyFileUtils;
 
 @Component
 public class Controller {
@@ -23,13 +24,19 @@ public class Controller {
     
     @Autowired
     private KingSlayers kingslayers;
+    
+    @Autowired
+    private MyFileUtils myfileUtils;
+    
+    @Autowired
+    private HTMLReader htmlReader;
 	
 //    @PostConstruct
 	public void mainProcess() throws Exception {
 		
 		boolean matchHigher = true; // MatchParameters with teams above us
 		boolean matchLower = false;
-		int maxGames=6; // Maximum games for kingslayer
+		int maxGames=4; // Maximum games for kingslayer
 		
 //		List<String> files=myfileUtils.getResourceFiles(System.getProperty("java.class.path", "."));
 //		
@@ -48,14 +55,13 @@ public class Controller {
 		
 		//webReader.directFromURL("https://gameknot.com/team.pl?chess=912"); // 403 - Forbidden
 		kingslayers.assignPlayers();
-		
+		kingslayers.getPlayers().sort(Comparator.comparing(Player::getName));
 		for (Player player:kingslayers.getPlayers()) {
 			
 			if (player.getActiveGames()>maxGames)
 				player.setAboveGameLimit(true);
 		}	
 		
-//		setPlayerPending("kimcote",false);
 //		setPlayerPending("abythomas1",false);
 //		setPlayerPending("darren6464",true);
 //		setPlayerMatchable("ehenrymay",true);
@@ -66,10 +72,11 @@ public class Controller {
 //		setPlayerStatus("juhu", false, false);
 //		setPlayerMatchable("madscan",true);
 //		setPlayerMatchable("mickey156",true);
-		setPlayerPending("kila01",false);
+//		setPlayerPending("kila01",false);
+//		setPlayerPending("kimcote",false);
 //		setPlayerPending("larksnest",false);
 //		setPlayerPending("lesktheglut", true);
-		setPlayerPending("gavish",false);
+//		setPlayerPending("gavish",false);
 //		setPlayerMatchable("greenlord",false);
 //		setPlayerPending("olderchessplayer",false);
 //		setPlayerPending("pawnish", true);
@@ -79,13 +86,13 @@ public class Controller {
 		setPlayerPending("allanchessw", true);
 		setPlayerPending("9maxmut9", true);
 		
-//		kingslayers.setMustMatch("evilgm");
+//		kingslayers.setMustMatch("gavish");
 		
-//		String html=myfileUtils.myReadFile("191231.xml");
-//		html+=myfileUtils.myReadFile("191223.xml");
-//		html+=myfileUtils.myReadFile("191217.xml");
-//		html+=myfileUtils.myReadFile("191210.xml");
-//		html+=myfileUtils.myReadFile("191203.xml");
+//		String html=myfileUtils.myReadFile("200201.xml");
+//		html+=myfileUtils.myReadFile("200125.xml");
+//		html+=myfileUtils.myReadFile("200118.xml");
+//		html+=myfileUtils.myReadFile("200111.xml");
+//		html+=myfileUtils.myReadFile("200104.xml");
 //		htmlReader.getGameHistory(html);
 //		
 //		System.exit(0);
@@ -98,17 +105,22 @@ public class Controller {
 				int rating=HTMLReader.getRatingNinetyDay(player.getName());
 				player.setRatingNinetyDay(rating);
 			}
+			String pending = player.isPending()? " Pending="+player.getPendingGames():"";
 			
-			System.out.println(rightpad(player.getName(),15)
+			System.out.println(rightpad(player.getName(),16)
 					+" Matchable="		+String.format("%1$5s", player.isMatchable())
 //					+" Above Game List="+player.isAboveGameLimit()
 //					+" Pending="		+player.isPending()
 					+" Rating="			+player.getRating()
-					+" Rating 90 Day="	+player.getRatingNinetyDay()
-					+" Active Matches=" +player.getActiveGames());
+					+" 90Day="	+String.format("%1$4s",player.getRatingNinetyDay())
+					+" Active=" +String.format("%1$2s",player.getActiveGames())
+					+  pending);
 		}
 		
 		System.out.println("Kingslayers Matchable Players="+kingslayers.getMatchablePlayers());
+		
+		if (kingslayers.getMatchablePlayers() <2)
+			System.exit(0);
 		
 		/*
 		 * Get ladder teams
@@ -192,9 +204,6 @@ public class Controller {
 		 * Get ladder players
 		 */
 		for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {	
-	
-			if (kingslayers.getMatchablePlayers() <2)
-				break;
 			
 			if (oppTeam.isMatchable()) { // at this point only pending or wrong rank
 				oppTeam.assignPlayers();
@@ -216,6 +225,7 @@ public class Controller {
 		
 		setPlayerNotThreeDay("cloud-runner"); // The Knights of the Crystal Castle
 		setPlayerNotThreeDay("dugstool");
+		setPlayerNotThreeDay("gameon007"); //Yeshua's Army
 		setPlayerNotThreeDay("unicorn88");
 		setPlayerNotThreeDay("hexenhammer");
 		setPlayerNotThreeDay("dirk_winwood");
@@ -230,6 +240,7 @@ public class Controller {
 		setPlayerNotThreeDay("withstand"); // The Knights of the Crystal Castle
 		setPlayerNotThreeDay("rsinq"); // THE BLACK STALLION INTERNATIONAL CHESS TEAM
 		setPlayerNotThreeDay("sculldog"); // The Outcasts
+		setPlayerNotThreeDay("shawnbriscoe"); // Yeshua's Army
 		/*
 		 * 
 		 */

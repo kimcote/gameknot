@@ -45,6 +45,8 @@ public class Player {
     private int draws;
     @Getter
     private int losses;
+    @Getter
+    private double points;
     
     @Getter
     private int activeGames;
@@ -135,15 +137,18 @@ public class Player {
 
 	public void addWin() {
 		this.wins++;
+		this.points++;
 		
 	}
 
 	public void addDraw() {
 		this.draws++;
+		this.points=this.points+0.5;
 		
 	}
 
 	public void addLoss() {
 		this.losses++;
+		this.points--;
 	}
 }

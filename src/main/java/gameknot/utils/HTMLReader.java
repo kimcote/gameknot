@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -57,7 +58,7 @@ public class HTMLReader {
 					
 					Date date1=new SimpleDateFormat("dd-MMM-yy").parse(date); 
 					
-				    if (localDate.getMonth()==Month.DECEMBER) {  
+				    if (localDate.getMonth()==Month.JANUARY) {  
 						String playerName = elementsData.get(1).text();
 						String opponent = elementsData.get(3).text();
 						String result = elementsData.get(6).text();
@@ -70,13 +71,13 @@ public class HTMLReader {
 				}
 			}
 		}
-		
+		kingSlayers.getPlayers().sort(Comparator.comparing(Player::getPoints).reversed());
 		for (Player player:kingSlayers.getPlayers()) {
 			System.out.println(player.getName() 
 					+ " Wins="+player.getWins()
 					+ " Draws="+player.getDraws()
 					+ " Losses="+player.getLosses()
-					+ " Points="+(player.getWins()-player.getLosses()));
+					+ " Points="+player.getPoints());
 		}
 //		
 //		Elements elements = document.select("script");
