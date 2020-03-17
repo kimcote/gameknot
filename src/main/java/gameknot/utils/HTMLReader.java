@@ -31,10 +31,7 @@ public class HTMLReader {
 	@Autowired
 	private static MyFileUtils fileUtils;
 
-	@Autowired
-	private KingSlayers kingSlayers;
-
-	public void getGameHistory(String html) throws IOException, URISyntaxException, ParseException {
+	public void getGameHistory(KingSlayers kingSlayers, String html, Month month) throws IOException, URISyntaxException, ParseException {
 		
 //		String html=MyFileUtils.readFile(fileName);
 				
@@ -58,7 +55,7 @@ public class HTMLReader {
 					
 					Date date1=new SimpleDateFormat("dd-MMM-yy").parse(date); 
 					
-				    if (localDate.getMonth()==Month.JANUARY) {  
+				    if (localDate.getMonth()==month) {  
 						String playerName = elementsData.get(1).text();
 						String opponent = elementsData.get(3).text();
 						String result = elementsData.get(6).text();
@@ -231,16 +228,22 @@ public class HTMLReader {
 //	}
 
 	public static int getRatingNinetyDay(String playerName) {
+		
+		try {
 
-		String html = WebReader.jsoup("/mini-stats.pl?u=" + playerName);
-
-		Document doc = Jsoup.parse(html);
-
-		Elements trElements = doc.select("tr");
-
-		Elements tdElements = trElements.get(1).getElementsByTag("td");
-
-		return Integer.parseInt(tdElements.get(1).text());
+			String html = WebReader.jsoup("/mini-stats.pl?u=" + playerName);
+	
+			Document doc = Jsoup.parse(html);
+	
+			Elements trElements = doc.select("tr");
+	
+			Elements tdElements = trElements.get(1).getElementsByTag("td");
+	
+			return Integer.parseInt(tdElements.get(1).text());
+		} catch (Exception e) {
+			System.out.println("Error: getRatingNinetyDay. Player="+playerName + " " + e.getMessage());
+			return 0;
+		}
 	}
 
 	public static String getHTML(String link) {

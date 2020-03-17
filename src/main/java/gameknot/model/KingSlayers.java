@@ -3,9 +3,11 @@ package gameknot.model;
 
 import java.io.IOException;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import gameknot.services.MatchParameters;
 import lombok.Getter;
 
 @Component
@@ -24,8 +26,15 @@ public class KingSlayers extends Team{
     
     public void setMustMatch(String playername) {
     	
-    	if (this.mustMatch!=null) {
-			throw new RuntimeException("Only one must match allowed");
+    	if (StringUtils.isEmpty(playername)) {
+    		
+    		if (this.players!=null) {
+	    		for (Player player:players) {
+	    			player.setMustMatch(false);
+	        	}
+    		}
+			this.mustMatch=null;
+			return;
 		}
     	
     	for (Player player:players) {
@@ -66,6 +75,7 @@ public class KingSlayers extends Team{
         	if (ksPlayer.isMatchable() && ksPlayer.getBestMatch()!=null) {
         		
         		if (ksPlayer.isMustMatch()) { // If player is the mustmatch player, match as 1st
+        			System.out.println("MustMatch has matched");
         			return ksPlayer;
         		}
         		
@@ -112,5 +122,17 @@ public class KingSlayers extends Team{
 			}
         }	
 		
+	}
+
+	public int getMatchedPlayers() {
+		int count=0;
+		
+		for (Player ksplayer: this.players) {
+			
+			if (ksplayer.getBestMatch()!=null)
+				count++;
+		}
+		
+		return count;
 	}
 }

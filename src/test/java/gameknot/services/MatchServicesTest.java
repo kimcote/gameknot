@@ -1,11 +1,14 @@
-package gameknot.process;
+package gameknot.services;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -18,7 +21,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import gameknot.model.KingSlayers;
 import gameknot.model.KingSlayersSetup;
 import gameknot.model.Ladder;
-import gameknot.model.MatchParameters;
 import gameknot.model.ModelConfig;
 import gameknot.model.OppositionTeam;
 import gameknot.model.Player;
@@ -27,16 +29,34 @@ import gameknot.utils.UtilsMockConfig;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @ContextConfiguration(classes={MatchService.class, ModelConfig.class, UtilsMockConfig.class})
-public class MatchPlayersTest extends KingSlayersSetup{
+public class MatchServicesTest extends KingSlayersSetup{
 	
 	@Autowired
     private KingSlayers kingslayers;
+	
+	@Autowired
+	private OppositionTeam oppTeam;
 	
 	@Autowired
 	private MatchParameters matchParams;
 	
 	@MockBean
 	private Ladder ladder;
+	
+	@Before
+	public void init() {
+		Mockito.reset(ladder);
+		oppTeam = new OppositionTeam();
+//		kingslayers=new KingSlayers();
+	}
+	
+	@After
+	public void cleanUp() {
+		kingslayers.setPlayers(null);
+		kingslayers.setMustMatch(null);
+	}
+	
+	
 	
 	@Test
 	public void matchDiffRatingDiffs() throws IOException, InterruptedException { //throws IOException, InterruptedException {
@@ -45,10 +65,10 @@ public class MatchPlayersTest extends KingSlayersSetup{
 		
 		List<OppositionTeam> oppositionTeams = new ArrayList<OppositionTeam>();
 		
-		List<Player> players = new ArrayList<Player>();
-		players.add(setupOppPlayer("Opp1", 1410,"0"));
-		players.add(setupOppPlayer("Opp2", 1550,"0"));
-		oppositionTeams.add(new OppositionTeam("OppTeam1", 1, players));
+		oppTeam = setupOppositionTeam(2);
+		oppTeam.getPlayers().get(0).setRating(1450);
+		oppTeam.getPlayers().get(1).setRating(1550);
+		oppositionTeams.add(oppTeam);
 
 		assertEquals(2,oppositionTeams.get(0).getMatchablePlayers());
 		
@@ -85,16 +105,17 @@ public class MatchPlayersTest extends KingSlayersSetup{
 //	}
 	
 	@Test
-	public void matchOneAtATime_EqualDiff() throws IOException, InterruptedException { //throws IOException, InterruptedException {
+	public void matchEqualDiff() throws IOException, InterruptedException { //throws IOException, InterruptedException {
 		
 		setupKingSlayers(2);
+		assertEquals(2,kingslayers.getMatchablePlayers());
 		
 		List<OppositionTeam> oppositionTeams = new ArrayList<OppositionTeam>();
 		
-		List<Player> players = new ArrayList<Player>();
-		players.add(setupOppPlayer("Opp1", 1450,"0"));
-		players.add(setupOppPlayer("Opp2", 1450,"0"));
-		oppositionTeams.add(new OppositionTeam("OppTeam1", 1, players));
+		oppTeam = setupOppositionTeam(2);
+		oppTeam.getPlayers().get(0).setRating(1450);
+		oppTeam.getPlayers().get(1).setRating(1550);
+		oppositionTeams.add(oppTeam);
 		
 		assertEquals(2,oppositionTeams.get(0).getMatchablePlayers());
 		
@@ -130,25 +151,30 @@ public class MatchPlayersTest extends KingSlayersSetup{
 	
 	@Test
 	public void matchOneOppTeam_ThreePlayers() throws IOException, InterruptedException { //throws IOException, InterruptedException {
-		
-		setupKingSlayers(2);
-		
-		List<OppositionTeam> oppositionTeams = new ArrayList<OppositionTeam>();
+		System.out.println("\nmatchOneOppTeam_ThreePlayers");
 		
 		List<Player> players = new ArrayList<Player>();
-		players.add(setupOppPlayer("Player1", 1430, "0"));
-		players.add(setupOppPlayer("Player2", 1460, "0"));
-		players.add(setupOppPlayer("Player3", 1410, "0"));
-		oppositionTeams.add(new OppositionTeam("OppTeam", 1, players));
+		players.add(new Player("KS1",1400,1450));
+		players.add(new Player("KS2",1420,1450));
+		players.add(new Player("KS3",1440,1450));
+		kingslayers.setPlayers(players);
+		
+		List<OppositionTeam> oppositionTeams = new ArrayList<OppositionTeam>();
+		players = new ArrayList<Player>();
+		players.add(new Player("Opp1",1450,1450));
+		players.add(new Player("Opp2",1430,1450));
+		players.add(new Player("Opp3",1410,1450));
+		oppositionTeams.add(new OppositionTeam("OppTeam1", 1, players));
 
 		assertEquals(3,oppositionTeams.get(0).getMatchablePlayers());
 		
 		Mockito.when(ladder.getOppositionTeams()).thenReturn(oppositionTeams);
 		
-		matchParams.run(50,false,false);
+		matchParams.run(50,true,false);
 		
-		assertEquals("Player3", kingslayers.getPlayers().get(0).getBestMatch().getName());
-		assertEquals("Player2", kingslayers.getPlayers().get(1).getBestMatch().getName());
+		assertEquals(1,kingslayers.getMatchablePlayers());
+		assertEquals("Opp3", kingslayers.getPlayers().get(0).getBestMatch().getName());
+		assertEquals("Opp2", kingslayers.getPlayers().get(1).getBestMatch().getName());
 	}
 	
 	@Test
@@ -180,16 +206,17 @@ public class MatchPlayersTest extends KingSlayersSetup{
 		setupKingSlayers(4);
 		
 		List<OppositionTeam> oppositionTeams = new ArrayList<OppositionTeam>();
+		oppTeam = setupOppositionTeam(2);
+		oppTeam.getPlayers().get(0).setRating(1440);
+		oppTeam.getPlayers().get(1).setRating(1540);
 		
-		List<Player> players = new ArrayList<Player>();
-		players.add(setupOppPlayer("OppTeam1Player1", 1440, "0"));
-		players.add(setupOppPlayer("OppTeam1Player2", 1540, "0"));
-		oppositionTeams.add(new OppositionTeam("OppTeam1", 1, players));
+		oppositionTeams.add(oppTeam);
 		
-		players = new ArrayList<Player>();
-		players.add(setupOppPlayer("OppTeam2Player1", 1640, "0"));
-		players.add(setupOppPlayer("OppTeam2Player2", 1740, "0"));
-		oppositionTeams.add(new OppositionTeam("OppTeam2", 2, players));
+		oppTeam = setupOppositionTeam(2);
+		oppTeam.getPlayers().get(0).setRating(1640);
+		oppTeam.getPlayers().get(1).setRating(1740);
+		
+		oppositionTeams.add(oppTeam);
 
 		assertEquals(2,oppositionTeams.size());
 		assertEquals(2,oppositionTeams.get(0).getMatchablePlayers());
@@ -204,22 +231,16 @@ public class MatchPlayersTest extends KingSlayersSetup{
 	
 	@Test
 	public void match90Day() throws IOException, InterruptedException { //throws IOException, InterruptedException {
-		Player player;
+		System.out.println("\nmatch90Day");
 		setupKingSlayers(2);
+		oppTeam = setupOppositionTeam(2);
 		
 		List<OppositionTeam> oppositionTeams = new ArrayList<OppositionTeam>();
 		
-		List<Player> players = new ArrayList<Player>();
+		oppTeam.getPlayers().get(0).setRatingNinetyDay(1450);
+		oppTeam.getPlayers().get(1).setRatingNinetyDay(1550);
 		
-		player=setupOppPlayer("Opp1", 1450, "0");
-		player.setRatingNinetyDay(1450);
-		players.add(player);
-		
-		player=setupOppPlayer("Opp2", 1550, "0");
-		player.setRatingNinetyDay(1550);
-		players.add(player);
-		
-		oppositionTeams.add(new OppositionTeam("OppTeam1", 1, players));
+		oppositionTeams.add(oppTeam);
 
 		assertEquals(2,oppositionTeams.get(0).getMatchablePlayers());
 		
@@ -233,23 +254,20 @@ public class MatchPlayersTest extends KingSlayersSetup{
 	}
 	
 	@Test
-	public void matchNinetyDayHigherLowerNormal_NoMatch() throws IOException, InterruptedException { //throws IOException, InterruptedException {
-		Player player;
+	public void match_OppLowerNormalHigher90Day_NoMatch() throws IOException, InterruptedException { 
+		System.out.println("\nmatch_OppLowerNormalHigher90Day_NoMatch");
+		
 		setupKingSlayers(2);
+		
+		oppTeam = setupOppositionTeam(2);
+		oppTeam.getPlayers().get(0).setRating(1399);
+		oppTeam.getPlayers().get(0).setRatingNinetyDay(1451);
+		oppTeam.getPlayers().get(1).setRating(1499);
+		oppTeam.getPlayers().get(1).setRatingNinetyDay(1551);
 		
 		List<OppositionTeam> oppositionTeams = new ArrayList<OppositionTeam>();
 		
-		List<Player> players = new ArrayList<Player>();
-		
-		player=setupOppPlayer("Opp1", 1400, "0");
-		player.setRatingNinetyDay(1450);
-		players.add(player);
-		
-		player=setupOppPlayer("Opp2", 1500, "0");
-		player.setRatingNinetyDay(1550);
-		players.add(player);
-		
-		oppositionTeams.add(new OppositionTeam("OppTeam1",1, players));
+		oppositionTeams.add(oppTeam);
 
 		assertEquals(2,oppositionTeams.get(0).getMatchablePlayers());
 		
@@ -292,28 +310,20 @@ public class MatchPlayersTest extends KingSlayersSetup{
 	}
 	
 	@Test
-	public void matchMustMatch() throws IOException, InterruptedException { //throws IOException, InterruptedException {
-		Player player;
+	public void matchMustMatch_LastKS() throws IOException, InterruptedException { //throws IOException, InterruptedException {
+		
 		setupKingSlayers(3);
 		
 		Player mustMatch=kingslayers.getPlayers().get(2);
 		mustMatch.setMustMatch(true);
 		kingslayers.setMustMatch(mustMatch.getName());
 		
+		oppTeam = setupOppositionTeam(3);
+		oppTeam.getPlayers().get(2).setRating(1650);
+		
 		List<OppositionTeam> oppositionTeams = new ArrayList<OppositionTeam>();
 		
-		List<Player> players = new ArrayList<Player>();
-		
-		player=setupOppPlayer("Opp1", 1400, "0");
-		players.add(player);
-		
-		player=setupOppPlayer("Opp2", 1500, "0");
-		players.add(player);
-		
-		player=setupOppPlayer("Opp3", 1650, "0");
-		players.add(player);
-		
-		oppositionTeams.add(new OppositionTeam("OppTeam1", 1, players));
+		oppositionTeams.add(oppTeam);
 
 		assertEquals(3,oppositionTeams.get(0).getMatchablePlayers());
 		
@@ -323,6 +333,33 @@ public class MatchPlayersTest extends KingSlayersSetup{
 		
 		assertEquals(1,kingslayers.getMatchablePlayers());
 		assertEquals("Opp3",mustMatch.getBestMatch().getName());
+	}
+	
+	@Test
+	public void matchMustMatch_FirstKS() throws IOException, InterruptedException { //throws IOException, InterruptedException {
+		System.out.println("\nmatchMustMatch_FirstKS");
+		setupKingSlayers(3);
+		
+		Player mustMatch=kingslayers.getPlayers().get(0);
+		mustMatch.setMustMatch(true);
+		kingslayers.setMustMatch(mustMatch.getName());
+
+		oppTeam = setupOppositionTeam(3);
+		oppTeam.getPlayers().get(0).setRating(1450);
+		
+		List<OppositionTeam> oppositionTeams = new ArrayList<OppositionTeam>();
+		oppositionTeams.add(oppTeam);
+		assertEquals(3,oppositionTeams.get(0).getMatchablePlayers());
+		
+		Mockito.when(ladder.getOppositionTeams()).thenReturn(oppositionTeams);
+		assertEquals(oppositionTeams, ladder.getOppositionTeams());
+		
+		assertTrue(oppTeam.isMatchable());
+		
+		matchParams.run(50,false,false);
+		
+		assertEquals(1,kingslayers.getMatchablePlayers());
+		assertEquals("Opp1",mustMatch.getBestMatch().getName());
 	}
 	
 	@Test

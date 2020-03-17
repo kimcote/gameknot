@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
+import gameknot.services.MatchParameters;
 import gameknot.utils.HTMLReader;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,11 +14,24 @@ import lombok.Setter;
 public class Player {
 	
 	public Player () {}
+	
+	public Player(String name, int rating, int ratingNinety) {
+		newPlayer(name,rating, "0");
+		this.ratingNinetyDay=ratingNinety;
+		this.closeRating=true;
+	}
 
-    public Player(String name, int rating, String games, boolean available) {
-        this.name = name;
+	public Player(String name, int rating, String games) {
+		newPlayer(name,rating, games);
+		this.closeRating=true;
+    }
+
+	private void newPlayer(String name, int rating, String games) {
+		this.name = name;
         this.rating = rating;
-        this.available=available;
+//        this.available=true;
+        this.closeRating=true;
+        this.setMustMatch(false);
         
         if (StringUtils.contains(games, "+")) {
         	this.pending=true;
@@ -28,15 +42,16 @@ public class Player {
         	this.activeGames=Integer.parseInt(games);
         	this.pendingGames=0;
         }
-    }
-    
+	}
+	
+	
     @Getter
     private String name;
     
-    @Setter
-    private boolean available;
+//    @Getter @Setter
+//    private boolean available;
     
-    @Getter
+    @Getter @Setter
     private int rating;
     
     @Getter
@@ -60,7 +75,7 @@ public class Player {
     @Getter @Setter
     private boolean pending;
     
-    @Setter
+    @Getter @Setter
     private boolean aboveGameLimit;
     
     @Setter
@@ -69,7 +84,7 @@ public class Player {
     @Getter @Setter
     private Player bestMatch;
     
-    @Setter 
+    @Getter @Setter 
     private boolean matched;
     
     @Getter @Setter
@@ -94,9 +109,25 @@ public class Player {
     private boolean mustMatch;
     
     public boolean isMatchable() {
-    	return this.available && !this.pending && !this.aboveGameLimit && !this.notThreeDay && !this.matched && this.closeRating;
+    	return !this.pending && !this.aboveGameLimit && !this.notThreeDay && !this.matched && this.closeRating;
     }
     
+    public String getInfo() {
+    	return "Name="+this.name
+    		  + " Matchable="+isMatchable()
+//    		  + " Available=" + this.available 
+    		  + " Pending="+ this.pending
+    		  + " AboveGameLimit=" + this.aboveGameLimit 
+    		  + " NotThreeDay=" + this.notThreeDay 
+    		  + " Matched=" + this.matched 
+    		  + " CloseRating="+this.closeRating;
+    }
+    
+    public String getMatchInfo() {
+    	return "Name="+this.name
+    		  + " Rating=" + this.rating
+    		  + " ("+this.ratingNinetyDay+")";
+    }
     /*
      * Get best match for Player from opp Team
      */
@@ -115,18 +146,19 @@ public class Player {
 	    			oppPlayer.setRatingNinetyDay(rating);
 	    		}
 	    		
-	    		diff90Day  = Math.abs(this.getRatingNinetyDay() - oppPlayer.getRatingNinetyDay());
+//	    		diff90Day  = Math.abs(this.getRatingNinetyDay() - oppPlayer.getRatingNinetyDay());
 	    		diffNormal = Math.abs(this.getRating()          - oppPlayer.getRating());
-	    		diff = match.isNinetyDay() ? diff90Day : diffNormal;
+//	    		diff = match.isNinetyDay() ? diff90Day : diffNormal;
 	    		
-	    		if (diff90Day  <= match.getMaxDiff()
-	    		 && diffNormal <= match.getMaxDiff()
-	    		 && diff       <= closestDiff
+//	    		if (diff90Day  <= match.getMaxDiff()
+//	    		if (diffNormal <= match.getMaxDiff()
+	    		if (diffNormal <= closestDiff
 	    		 && (match.isHigherNinetyDayLowerNormal()
-	    		 && this.getRating() 		  < oppPlayer.getRating()		
-	    		 && this.getRatingNinetyDay() > oppPlayer.getRatingNinetyDay()
-	    		 || !match.isHigherNinetyDayLowerNormal())) {		
-		    		closestDiff=diff;
+	    		 && this.getRating() 		  <= oppPlayer.getRating()		
+	    		 && this.getRatingNinetyDay() >= oppPlayer.getRatingNinetyDay() 
+	    		 || !match.isHigherNinetyDayLowerNormal())) {	
+	    			
+		    		closestDiff=diffNormal;
 		    		bestMatch=oppPlayer;
 	    		}
 	    	}

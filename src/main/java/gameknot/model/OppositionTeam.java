@@ -1,6 +1,7 @@
 package gameknot.model;
 
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 
 import org.springframework.stereotype.Component;
 
@@ -45,6 +46,18 @@ public class OppositionTeam extends Team {
     	if (getPendingGames()>=20) s+=" PendingGames="+getPendingGames();
     	if (getMatchablePlayers()<2) s+=" Matchable PLayers="+getMatchablePlayers();
     	return s;
+    }
+    
+    public String getInfo() {
+    	return "Rank=" + this.getRank() 
+		+ " Team="+StringUtils.rightPad(this.getName(),45)
+		+ " Pending Games="+this.getPendingGames()
+//					+ " Active Matches="+this.getActiveMatches() 
+		+ " Available Players="+this.players.size()
+		+ " Pending Players="+this.getPendingPlayers()
+		+ " Above Game Limit Players=" + this.getAboveGameLimitPlayers()
+		+ " Close Rating Players="+this.getCloseRatingPlayers()
+		+ " Matchable Players="+this.getMatchablePlayers();
     }
     
     public int getMatchablePlayers() {
@@ -107,4 +120,46 @@ public class OppositionTeam extends Team {
     public void assignPlayers() {
 		this.players = JSONUtils.getPlayersFromTeamLink(this.link);
     }
+
+	public int getAboveGameLimitPlayers() {
+		int count=0;
+		
+		if (players != null) { 
+
+			for (Player player:players) { 
+			
+				if (player.isAboveGameLimit()) count++;
+			}
+		}
+  
+		return count;
+	}
+
+	public int getMatchedPlayers() {
+		int count=0;
+		
+		if (players != null) { 
+
+			for (Player player:players) { 
+			
+				if (player.isMatched()) count++;
+			}
+		}
+  
+		return count;
+	}
+
+//	public int getAvailablePlayers() {
+//		int count=0;
+//		
+//		if (players != null) { 
+//
+//			for (Player player:players) { 
+//			
+//				if (player.isAvailable()) count++;
+//			}
+//		}
+//  
+//		return count;
+//	}
 }

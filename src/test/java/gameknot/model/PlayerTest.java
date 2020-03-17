@@ -16,7 +16,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import gameknot.process.ProcessMockConfig;
+import gameknot.services.MatchParameters;
+import gameknot.services.ProcessMockConfig;
 import gameknot.utils.UtilsMockConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -33,14 +34,14 @@ public class PlayerTest extends KingSlayersSetup {
 	@Before
 	public void init() {
 		matchParams.setMaxDiff(50);
-		matchParams.setHigherNinetyDayLowerNormal(false);
+		matchParams.setHigherNinetyDayLowerNormal(true);
 		matchParams.setNinetyDay(false);
 	}
 	
 	@Test
 	public void newPlayer() {
 		
-		Player player = new Player("KS1", 1400, "2", true);
+		Player player = new Player("KS1", 1400, "2");
 		
 		assertEquals("KS1", player.getName());
 		assertEquals(1400, player.getRating());
@@ -52,7 +53,7 @@ public class PlayerTest extends KingSlayersSetup {
 	@Test
 	public void newPlayer_Pending() {
 		
-		Player player = new Player("KS2", 1500, "4 + 2", true);
+		Player player = new Player("KS2", 1500, "4 + 2");
 		
 		assertEquals("KS2", player.getName());
 		assertEquals(1500, player.getRating());
@@ -64,7 +65,7 @@ public class PlayerTest extends KingSlayersSetup {
 	@Test
 	public void newPlayer_DoubleFigureGames() {
 		
-		Player player = new Player("KS3", 1600, "10 + 2", true);
+		Player player = new Player("KS3", 1600, "10 + 2");
 		
 		assertEquals("KS3", player.getName());
 		assertEquals(1600, player.getRating());
@@ -78,10 +79,11 @@ public class PlayerTest extends KingSlayersSetup {
 		
 		setupKingSlayers(2);
 		
-		Player player = new Player("Opp1", 1400, "0", true);
+		Player player = new Player("Opp1", 1350, "0");
 		player.assignCloseRating(kingslayers, 50);
 		
-		assertFalse(player.isCloseRating());
+		assertTrue(player.isCloseRating());
+		assertTrue(player.isMatchable());
 	}
 	
 	@Test 
@@ -89,10 +91,11 @@ public class PlayerTest extends KingSlayersSetup {
 		
 		setupKingSlayers(2);
 		
-		Player player = new Player("Opp2", 1500, "0", true);
+		Player player = new Player("Opp2", 1550, "0");
 		player.assignCloseRating(kingslayers, 50);
 		
-		assertFalse(player.isCloseRating());
+		assertTrue(player.isCloseRating());
+		assertTrue(player.isMatchable());
 	}
 	
 	@Test 
@@ -100,10 +103,11 @@ public class PlayerTest extends KingSlayersSetup {
 		
 		setupKingSlayers(2);
 		
-		Player player = new Player("Opp1", 1551, "0", true);
+		Player player = new Player("Opp1", 1551, "0");
 		player.assignCloseRating(kingslayers, 50);
 		
-		assertTrue(player.isCloseRating());
+		assertFalse(player.isCloseRating());
+		assertFalse(player.isMatchable());
 	}
 	
 	@Test
@@ -111,15 +115,12 @@ public class PlayerTest extends KingSlayersSetup {
 		
 		setupKingSlayers(1);
 		
-		List<Player> players = new ArrayList<Player>();
-		
-		players.add(setupOppPlayer("Opp1", 1400, "0"));
-		
-		OppositionTeam oppTeam = new OppositionTeam("OppTeam1", 1, players);
+		OppositionTeam oppTeam = setupOppositionTeam(1);
+//		oppTeam.getPlayers().get(0).setRatingNinetyDay(1451);
 		
 		kingslayers.getPlayers().get(0).assignBestMatch(matchParams, oppTeam);
 		
-		assertEquals(players.get(0), kingslayers.getPlayers().get(0).getBestMatch());
+		assertEquals(oppTeam.getPlayers().get(0), kingslayers.getPlayers().get(0).getBestMatch());
 	}
 	
 	@Test
@@ -159,19 +160,12 @@ public class PlayerTest extends KingSlayersSetup {
 	 * Tests with Ninety90GtrNormal and Ninety MatchParameters
 	 */
 	@Test
-	public void assignBestMatch_HigherNinetyDayLowerNormal_NinetyDay_Opp1_NoMatch() throws IOException, InterruptedException {
-		matchParams.setHigherNinetyDayLowerNormal(true);
-		matchParams.setNinetyDay(true);
+	public void assignBestMatch_OppNinetyDayHigher_NoMatch() throws IOException, InterruptedException {
 	
 		setupKingSlayers(1);
 		
-		List<Player> players = new ArrayList<Player>();
-		
-		Player opp1 = setupOppPlayer("Opp1", 1450, "0");
-		opp1.setRatingNinetyDay(1450);
-		players.add(opp1);
-		
-		OppositionTeam oppTeam = new OppositionTeam("OppTeam1", 1, players);
+		OppositionTeam oppTeam = setupOppositionTeam(1);
+		oppTeam.getPlayers().get(0).setRatingNinetyDay(1451);
 		
 		kingslayers.getPlayers().get(0).assignBestMatch(matchParams, oppTeam);
 		
@@ -179,19 +173,11 @@ public class PlayerTest extends KingSlayersSetup {
 	}
 	
 	@Test
-	public void assignBestMatch_HigherNinetyDayLowerNormal_NinetyDay_Opp1_Match() throws IOException, InterruptedException {
-		matchParams.setHigherNinetyDayLowerNormal(true);
-		matchParams.setNinetyDay(true);
-	
+	public void assignBestMatch_OppNormalLower_NoMatch() throws IOException, InterruptedException {
 		setupKingSlayers(1);
 		
-		List<Player> players = new ArrayList<Player>();
-		
-		Player opp1 = setupOppPlayer("Opp1", 1450, "0");
-		opp1.setRatingNinetyDay(1350);
-		players.add(opp1);
-		
-		OppositionTeam oppTeam = new OppositionTeam("OppTeam1", 1, players);
+		OppositionTeam oppTeam = setupOppositionTeam(1);
+		oppTeam.getPlayers().get(0).setRating(1399);
 		
 		kingslayers.getPlayers().get(0).assignBestMatch(matchParams, oppTeam);
 		

@@ -33,12 +33,14 @@ public class JSONUtils {
             
             boolean available= (jsonObj.get("uid").toString().startsWith("available"));
             	
-        	player = new Player(jsonObj.getString("name"), 
-        						jsonObj.getInt("rating"), 
-        						jsonObj.getString("activeIncludingPending"),
-        						available);
+            if (available) {
+	        	player = new Player(jsonObj.getString("name"), 
+	        						jsonObj.getInt("rating"), 
+	        						jsonObj.getString("activeIncludingPending")
+	        						);
 //            	System.out.println(player.getName()+ " active=" + player.getActive() + "pending="+player.isPending());
-        	players.add(player);
+	        	players.add(player);
+            }
         }
 		
 		return players;

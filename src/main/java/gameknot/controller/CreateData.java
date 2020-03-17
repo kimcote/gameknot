@@ -1,4 +1,4 @@
-package gameknot.process;
+package gameknot.controller;
 
 import org.springframework.stereotype.Component;
 

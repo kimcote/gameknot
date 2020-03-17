@@ -1,11 +1,10 @@
-package gameknot.model;
+package gameknot.services;
 
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import gameknot.process.MatchService;
 import lombok.Data;
 
 @Data
@@ -25,5 +24,9 @@ public class MatchParameters {
 		this.ninetyDay=ninetyDay;
 		
 		matchService.match();
+	}
+
+	public void run(int maxDiff, boolean higherNinetyDayLowerNormal) throws IOException, InterruptedException {
+		run(maxDiff, higherNinetyDayLowerNormal, false);
 	}
 }

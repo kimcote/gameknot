@@ -1,4 +1,4 @@
-package gameknot.process;
+package gameknot.services;
 
 import org.springframework.context.annotation.Configuration;
 

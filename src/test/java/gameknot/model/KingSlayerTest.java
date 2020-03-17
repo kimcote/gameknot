@@ -14,7 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import gameknot.process.ProcessMockConfig;
+import gameknot.services.MatchParameters;
+import gameknot.services.ProcessMockConfig;
 import gameknot.utils.UtilsConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -174,59 +175,59 @@ public class KingSlayerTest extends KingSlayersSetup{
 		assertEquals(null, kingslayers.getPlayers().get(2).getBestMatch());
 	}
 	
-	@Test
-	public void assignBestMatch_NormalMatch_NinetyDayGtrMaxDiff() throws IOException, InterruptedException {
-		
-		setupKingSlayers(3);
-		
-		List<Player> players = new ArrayList<Player>();
-		
-		Player opp1=setupOppPlayer("Opp1", 1400, "0");
-		opp1.setRatingNinetyDay(1550);
-		players.add(opp1);
-		
-		Player opp2=setupOppPlayer("Opp2", 1500, "0");
-		opp2.setRatingNinetyDay(1650);
-		players.add(opp2);
-		
-		OppositionTeam oppTeam = new OppositionTeam("OppTeam1", 1, players);
-		
-		matchparams.setHigherNinetyDayLowerNormal(true);
-		matchparams.setNinetyDay(false);
-		
-		kingslayers.assignBestMatch(matchparams,oppTeam);
-		
-		assertEquals(null, kingslayers.getPlayers().get(0).getBestMatch());
-		assertEquals(null, kingslayers.getPlayers().get(1).getBestMatch());
-		assertEquals(null, kingslayers.getPlayers().get(2).getBestMatch());
-	}
-	
-	@Test
-	public void assignBestMatch_NinetyMatch_NinetyDayGtrMaxDiff() throws IOException, InterruptedException {
-		
-		setupKingSlayers(3);
-		
-		List<Player> players = new ArrayList<Player>();
-		
-		Player opp1=setupOppPlayer("Opp1", 1400, "0");
-		opp1.setRatingNinetyDay(1501);
-		players.add(opp1);
-		
-		Player opp2=setupOppPlayer("Opp2", 1500, "0");
-		opp2.setRatingNinetyDay(1601);
-		players.add(opp2);
-		
-		OppositionTeam oppTeam = new OppositionTeam("OppTeam1", 1, players);
-		
-		matchparams.setNinetyDay(true);
-		matchparams.setHigherNinetyDayLowerNormal(false);
-		
-		kingslayers.assignBestMatch(matchparams,oppTeam);
-		
-		assertEquals(null, kingslayers.getPlayers().get(0).getBestMatch());
-		assertEquals(null, kingslayers.getPlayers().get(1).getBestMatch());
-		assertEquals(null, kingslayers.getPlayers().get(2).getBestMatch());
-	}
+//	@Test
+//	public void assignBestMatch_NormalMatch_NinetyDayGtrMaxDiff() throws IOException, InterruptedException {
+//		
+//		setupKingSlayers(3);
+//		
+//		List<Player> players = new ArrayList<Player>();
+//		
+//		Player opp1=setupOppPlayer("Opp1", 1400, "0");
+//		opp1.setRatingNinetyDay(1550);
+//		players.add(opp1);
+//		
+//		Player opp2=setupOppPlayer("Opp2", 1500, "0");
+//		opp2.setRatingNinetyDay(1650);
+//		players.add(opp2);
+//		
+//		OppositionTeam oppTeam = new OppositionTeam("OppTeam1", 1, players);
+//		
+//		matchparams.setHigherNinetyDayLowerNormal(true);
+//		matchparams.setNinetyDay(false);
+//		
+//		kingslayers.assignBestMatch(matchparams,oppTeam);
+//		
+//		assertEquals(null, kingslayers.getPlayers().get(0).getBestMatch());
+//		assertEquals(null, kingslayers.getPlayers().get(1).getBestMatch());
+//		assertEquals(null, kingslayers.getPlayers().get(2).getBestMatch());
+//	}
+//	
+//	@Test
+//	public void assignBestMatch_NinetyMatch_NinetyDayGtrMaxDiff() throws IOException, InterruptedException {
+//		
+//		setupKingSlayers(3);
+//		
+//		List<Player> players = new ArrayList<Player>();
+//		
+//		Player opp1=setupOppPlayer("Opp1", 1400, "0");
+//		opp1.setRatingNinetyDay(1501);
+//		players.add(opp1);
+//		
+//		Player opp2=setupOppPlayer("Opp2", 1500, "0");
+//		opp2.setRatingNinetyDay(1601);
+//		players.add(opp2);
+//		
+//		OppositionTeam oppTeam = new OppositionTeam("OppTeam1", 1, players);
+//		
+//		matchparams.setNinetyDay(true);
+//		matchparams.setHigherNinetyDayLowerNormal(false);
+//		
+//		kingslayers.assignBestMatch(matchparams,oppTeam);
+//		
+//		assertEquals(null, kingslayers.getPlayers().get(0).getBestMatch());
+//		assertEquals(null, kingslayers.getPlayers().get(1).getBestMatch());
+//		assertEquals(null, kingslayers.getPlayers().get(2).getBestMatch());
+//	}
 	
 	
 }

@@ -1,4 +1,4 @@
-package gameknot.process;
+package gameknot.services;
 
 import java.io.IOException;
 
@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import gameknot.model.KingSlayers;
 import gameknot.model.Ladder;
-import gameknot.model.MatchParameters;
 import gameknot.model.OppositionTeam;
 import gameknot.model.Player;
 
@@ -144,14 +143,16 @@ public class MatchService {
     	msg+= " matchOneAtATime ";
     	msg+= " Max Diff="+matchParams.getMaxDiff();
     	msg+= (matchParams.isHigherNinetyDayLowerNormal()) ?  " Higher Ninety Day Lower Normal ":" any ";
-    	msg+= (matchParams.isNinetyDay()) ? "MatchParameters Ninety Day" : "MatchParameters Normal";
+    	msg+= (matchParams.isNinetyDay()) ? "Match Ranking=Ninety Day" : "MatchParameters=Normal";
 		
 		System.out.println(msg);
-        
+//        System.out.println("ladder Teams To Match="+ladder.getOppositionTeams().size());
     	for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {
         	
-        	if (kingslayers.getMatchablePlayers() <2)
+        	if (kingslayers.getMatchablePlayers() <2) {
+//        		System.out.println("Kingslayers to match="+kingslayers.getMatchablePlayers());
         		break;
+        	}
         	
         	if (oppTeam.isMatchable()) {
 	        	System.out.println("Rank="+oppTeam.getRank() 
@@ -161,16 +162,28 @@ public class MatchService {
         		kingslayers.clearBestMatches();		        	
 	        	kingslayers.assignBestMatch(matchParams,oppTeam); // 1st
 	        	
+//	        	System.out.println("kingSlayers.matched="+kingslayers.getMatchedPlayers());
+	        	
+	        	if (kingslayers.getMatchedPlayers()>0) {
+	        		for (Player ksPlayer:kingslayers.getPlayers()) {
+	        			if (ksPlayer.getBestMatch()!=null) {
+	        				String msgMatch=ksPlayer.getMatchInfo() + " v " + ksPlayer.getBestMatch().getMatchInfo(); 
+	        				System.out.println("Match: "+msgMatch);
+	        			}
+	        		}
+	        	}
+	        	
 	        	matchedKSPlayer1=kingslayers.getBestMatched();
 	        	
 	        	if (matchedKSPlayer1!=null) {
-	        	
+//	        		System.out.println("matckedKSPlayer1="+matchedKSPlayer1.getName());
+//	        		System.out.println(kingslayers.getMustMatch().getName());
 	        		if (kingslayers.getMustMatch()==null 		// No must match player
 	        	     || kingslayers.getMustMatch().equals(matchedKSPlayer1)) { // Must match player has matched 
 	            	
 		        		matchedKSPlayer1.setMatched(true);
 		        		matchedKSPlayer1.getBestMatch().setMatched(true);
-//			        		System.out.println("Set MatchParameters 1 ks="+getPlayerDetails(matchedKSPlayer1)+ " Opp="+getPlayerDetails(matchedOppPlayer1));
+//			        	System.out.println("Set MatchParameters 1 ks="+getPlayerDetails(matchedKSPlayer1)+ " Opp="+getPlayerDetails(matchedKSPlayer1.getBestMatch()));
 		        	
 		        		kingslayers.assignBestMatch(matchParams,oppTeam); // 2nd
 		        	
@@ -179,9 +192,14 @@ public class MatchService {
 		        		if (matchedKSPlayer2!=null) {
 		        			matchedKSPlayer2.setMatched(true);
 		        			matchedKSPlayer2.getBestMatch().setMatched(true);
-//			        			System.out.println("Set MatchParameters 2 ks="+getPlayerDetails(matchedKSPlayer2)+ " Opp="+getPlayerDetails(matchedOppPlayer2));
+//			        		System.out.println("Set MatchParameters 2 ks="+getPlayerDetails(matchedKSPlayer2)+ " Opp="+getPlayerDetails(matchedOppPlayer2));
 		        			displayMatch(matchedKSPlayer1, matchedKSPlayer2, matchedKSPlayer1.getBestMatch(), matchedKSPlayer2.getBestMatch());
 		        			oppTeam.setPending(true);
+		        			
+		        			if (kingslayers.getMustMatch()!=null && kingslayers.getMustMatch().equals(matchedKSPlayer1)) {
+		        				kingslayers.getMustMatch().setMustMatch(false);
+		        				kingslayers.setMustMatch(null);
+		        			}
 		        		}
 		        		else {
 //			        			System.out.println("No 2nd match");

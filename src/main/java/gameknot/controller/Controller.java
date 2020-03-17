@@ -1,4 +1,4 @@
-package gameknot.process;
+package gameknot.controller;
 
 import java.util.Comparator;
 
@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 
 import gameknot.model.KingSlayers;
 import gameknot.model.Ladder;
-import gameknot.model.MatchParameters;
 import gameknot.model.OppositionTeam;
 import gameknot.model.Player;
+import gameknot.services.MatchParameters;
 import gameknot.utils.HTMLReader;
 import gameknot.utils.MyFileUtils;
 
@@ -36,7 +36,8 @@ public class Controller {
 		
 		boolean matchHigher = true; // MatchParameters with teams above us
 		boolean matchLower = false;
-		int maxGames=4; // Maximum games for kingslayer
+		int maxGames=6; // Maximum games for kingslayer
+		int maxDiff=50;
 		
 //		List<String> files=myfileUtils.getResourceFiles(System.getProperty("java.class.path", "."));
 //		
@@ -57,7 +58,7 @@ public class Controller {
 		kingslayers.assignPlayers();
 		kingslayers.getPlayers().sort(Comparator.comparing(Player::getName));
 		for (Player player:kingslayers.getPlayers()) {
-			
+//			player.setCloseRating(true);
 			if (player.getActiveGames()>maxGames)
 				player.setAboveGameLimit(true);
 		}	
@@ -83,25 +84,22 @@ public class Controller {
 //		setPlayerStatus("rave83",false,false);
 //		setPlayerMatchable("stevers", true);
 //		setPlayerStatus("white_knight48", false,false);
-		setPlayerPending("allanchessw", true);
+//		setPlayerPending("allanchessw", true);
 		setPlayerPending("9maxmut9", true);
 		
-//		kingslayers.setMustMatch("gavish");
+//		kingslayers.setMustMatch("stevers");
 		
-//		String html=myfileUtils.myReadFile("200201.xml");
-//		html+=myfileUtils.myReadFile("200125.xml");
-//		html+=myfileUtils.myReadFile("200118.xml");
-//		html+=myfileUtils.myReadFile("200111.xml");
-//		html+=myfileUtils.myReadFile("200104.xml");
-//		htmlReader.getGameHistory(html);
-//		
+//		String html=myfileUtils.myReadFile("200205.xml");
+//		html+=myfileUtils.myReadFile("200212.xml");
+//		html+=myfileUtils.myReadFile("200219.xml");
+//		html+=myfileUtils.myReadFile("200227.xml");
+//		html+=myfileUtils.myReadFile("200306.xml");
+//		htmlReader.getGameHistory(html,Month.FEBRUARY);
 //		System.exit(0);
 		
 		for (Player player:kingslayers.getPlayers()) {
 
-	        player.setCloseRating(true);
-	        
-			if (player.isMatchable()) {
+	        if (player.isMatchable()) {
 				int rating=HTMLReader.getRatingNinetyDay(player.getName());
 				player.setRatingNinetyDay(rating);
 			}
@@ -209,26 +207,29 @@ public class Controller {
 				oppTeam.assignPlayers();
 				
 				for (Player oppPlayer: oppTeam.getPlayers()) {
-					oppPlayer.assignCloseRating(kingslayers,60);
+					
+					if (oppPlayer.isMatchable()) {
+						oppPlayer.assignCloseRating(kingslayers,maxDiff);
+					}
 				}
 				
-				System.out.println("Rank=" + oppTeam.getRank() 
-				+ " Team="+rightpad(oppTeam.getName(),45)
-				+ " Pending Games="+oppTeam.getPendingGames()
-//					+ " Active Matches="+oppTeam.getActiveMatches() 
-				+ " Available Players="+oppTeam.getPlayers().size()
-				+ " Pending Players="+oppTeam.getPendingPlayers()
-				+ " Close Rating Players="+oppTeam.getCloseRatingPlayers()
-				+ " Matchable Players="+oppTeam.getMatchablePlayers());
+				System.out.println(oppTeam.getInfo());
+				
+//				for (Player oppPlayer: oppTeam.getPlayers()) {
+//					System.out.println(oppPlayer.getInfo());
+//				} 
+//				System.exit(0);
 			}		
 		}	
-		
+
+		setPlayerNotThreeDay("rsinq"); // THE BLACK STALLION INTERNATIONAL CHESS TEAM
+		setPlayerNotThreeDay("bobsogood"); // The Force
 		setPlayerNotThreeDay("cloud-runner"); // The Knights of the Crystal Castle
+		setPlayerNotThreeDay("withstand"); // The Knights of the Crystal Castle
 		setPlayerNotThreeDay("dugstool");
-		setPlayerNotThreeDay("gameon007"); //Yeshua's Army
-		setPlayerNotThreeDay("unicorn88");
-		setPlayerNotThreeDay("hexenhammer");
-		setPlayerNotThreeDay("dirk_winwood");
+		setPlayerNotThreeDay("unicorn88"); // Lucifers Army
+		setPlayerNotThreeDay("hexenhammer"); // Lucifers Army
+		setPlayerNotThreeDay("dirk_winwood"); // Lucifers Army
 		setPlayerNotThreeDay("souraj");
 		setPlayerNotThreeDay("king_0_nothing");
 		setPlayerNotThreeDay("qr19kaash");
@@ -237,87 +238,123 @@ public class Controller {
 		setPlayerNotThreeDay("vince2012");
 		setPlayerNotThreeDay("mervynrothwell");
 		setPlayerNotThreeDay("adelzaki");
-		setPlayerNotThreeDay("withstand"); // The Knights of the Crystal Castle
-		setPlayerNotThreeDay("rsinq"); // THE BLACK STALLION INTERNATIONAL CHESS TEAM
 		setPlayerNotThreeDay("sculldog"); // The Outcasts
+		setPlayerNotThreeDay("gameon007"); //Yeshua's Army
 		setPlayerNotThreeDay("shawnbriscoe"); // Yeshua's Army
+		setPlayerNotThreeDay("delacowboy"); // Yeshua's Army
+		
+		setPlayerNotThreeDay("jbbooks"); // Temp
 		/*
 		 * 
 		 */
-//		for (int i=0;i<=maxGames;i++) {
-		int i = maxGames;
-			
-			System.out.println("Active Games Limit="+i);
-			
-			for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {	
+//		for (int i=maxGames;i<=maxGames;i++) { 
+//			
+//			System.out.println("\nActive Games Limit="+i);
+//			
+//			for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {	
+//		
+//				if (oppTeam.isMatchable()) { // at this point only pending or wrong rank or Players NotThreeDay
+//				
+//					for (Player oppPlayer: oppTeam.getPlayers()) {	
+//						
+//						if (oppPlayer.isAvailable() && !oppPlayer.isPending())
+//							oppPlayer.setAboveGameLimit(oppPlayer.getActiveGames()>i);
+//					}
+//		
+//					System.out.println(oppTeam.getInfo());
+//				}
+//			}	
 		
-				if (oppTeam.isMatchable()) { // at this point only pending or wrong rank
-				
-					for (Player oppPlayer: oppTeam.getPlayers()) {				
-						oppPlayer.setAboveGameLimit(oppPlayer.getActiveGames()>i);
-					}
-		
-					System.out.println("Rank=" + oppTeam.getRank() 
-						+ " Team="+rightpad(oppTeam.getName(),45)
-						+ " Pending Games="+oppTeam.getPendingGames()
-	//					+ " Active Matches="+oppTeam.getActiveMatches() 
-						+ " Available Players="+oppTeam.getPlayers().size()
-						+ " Pending Players="+oppTeam.getPendingPlayers()
-						+ " Close Rating Players="+oppTeam.getCloseRatingPlayers()
-						+ " Matchable Players="+oppTeam.getMatchablePlayers());
-				}
-			}	
-		
-			matchParams.run(60, true,true); // Higher 90 Day Rating - MatchParameters on 90 day
-
-			matchParams.run(60, true,false); // Higher 90 day rating - match on normal
+//			matchParams.run(60, true,true); // Higher 90 Day Rating - MatchParameters on 90 day
+//			matchParams.run(60, true,false); // Higher 90 day rating - match on normal
 //		}
 		
-		matchParams.run(50, true,true); // Higher 90 Day Rating - MatchParameters on 90 day
-
-		matchParams.run(50, true,false); // Higher 90 day rating - match on normal
+//		matchParams.run(50, true,true); // Higher 90 Day Rating - MatchParameters on 90 day
+//		matchParams.run(50, true,false); // Higher 90 day rating - match on normal
 		
 //		matchParams.run(50, false,true); // any, match on 90 day
 //		
 //		matchParams.run(50, false,false); // any, match on normal
 		
-		for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {	
-			if (oppTeam.isMatchable()) { 
-				
-				for (Player oppPlayer: oppTeam.getPlayers()) {
-					oppPlayer.setAboveGameLimit(false);
-				}
-			}
-		}
+		/*
+		 * No Active Games Limit on opposition.
+		 */
 		
-		System.out.println("Active Games Limit=any");
+//		System.out.println("\nActive Games Limit=any");
+//		
+//		for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {	
+//				
+//			if (oppTeam.getPlayers()!=null) {
+//				
+//				for (Player oppPlayer: oppTeam.getPlayers()) {
+//					oppPlayer.setAboveGameLimit(false);
+//				}
+//			}
+//		}
 		
-		for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {	
-	
-			if (kingslayers.getMatchablePlayers() <2)
-				break;
-			
-			if (oppTeam.isMatchable()) { // at this point only pending or wrong rank
-				
-				System.out.println("Rank=" + oppTeam.getRank() 
-						+ " Team="+rightpad(oppTeam.getName(),45)
-						+ " Pending Games="+oppTeam.getPendingGames()
-//						+ " Active Matches="+oppTeam.getActiveMatches() 
-						+ " Available Players="+oppTeam.getPlayers().size()
-						+ " Pending Players="+oppTeam.getPendingPlayers()
-						+ " Close Rating Players="+oppTeam.getCloseRatingPlayers()
-						+ " Matchable Players="+oppTeam.getMatchablePlayers());
-			}
-		}	
+//		for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {	
+//	
+//			if (kingslayers.getMatchablePlayers() <2)
+//				break;
+//			
+//			if (oppTeam.isMatchable()) { // at this point only pending or wrong rank
+//				
+//				System.out.println(oppTeam.getInfo());
+//			}
+//		}	
 		
 		
-		matchParams.run(50, true,true); // Higher 90 Day Rating - MatchParameters on 90 day
-
-		matchParams.run(50, true,false); // Higher 90 day rating - match on normal
+		matchParams.run(maxDiff, true); // Higher 90 Day Rating 
+//		matchParams.run(50, true,false); // Higher 90 day rating - match on normal
+//		matchParams.run(maxDiff, false); // any
 		
-		matchParams.run(50, false,true); // any, match on 90 day		
-		matchParams.run(50, false,false); // any, match on normal
+		/* 
+		 * Search below Kingslayer rank
+		 */
+//		for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {
+//			oppTeam.setWrongRank(oppTeam.getRank()<kingslayers.getRank());
+//			
+//			if (oppTeam.isMatchable()) { // at this point only pending or wrong rank
+//				oppTeam.assignPlayers();
+//				
+//				for (Player oppPlayer: oppTeam.getPlayers()) {
+//					
+//					if (oppPlayer.isMatchable()) {
+//						oppPlayer.assignCloseRating(kingslayers,maxDiff);
+//					}
+//				}
+//				
+//				System.out.println(oppTeam.getInfo());
+//			}		
+//		}
+//		
+//		matchParams.run(maxDiff, true,true); // Higher 90 Day Rating - MatchParameters on 90 day
+//		matchParams.run(50, true,false); // Higher 90 day rating - match on normal
 		
+//		matchParams.run(50, false,true); // any, match on 90 day		
+//		matchParams.run(50, false,false); // any, match on normal
+		
+		/*
+		 * Match with 99 difference
+		 */
+//		System.out.println("\nMatch 99");
+//		
+//		for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {	
+//			
+//			if (oppTeam.getPlayers()!=null) {
+//				
+//				for (Player oppPlayer: oppTeam.getPlayers()) {
+//					
+//					if (oppPlayer.isAvailable()) {
+//						oppPlayer.assignCloseRating(kingslayers,99);
+//					}
+//				}
+//				
+//				System.out.println(oppTeam.getInfo());
+//			}		
+//		}	
+//		
+//		
 //		matchParams.run(99, true,true);
 //		matchParams.run(99, true,false);
 //		matchParams.run(99, false,true);

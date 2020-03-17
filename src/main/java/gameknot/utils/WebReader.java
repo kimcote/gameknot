@@ -30,7 +30,7 @@ public class WebReader {
 			Thread.sleep(1500);
 		
 			Document doc = Jsoup.connect("https://gameknot.com" + url)
-//				.timeout(3000)
+				.timeout(10000)
 				.get();
 		
 			return doc.html();
