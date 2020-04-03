@@ -1,0 +1,7 @@
+matchHigher: true 				# MatchParameters with teams above us
+matchLower: false
+matchHigherNinetyDay: true		# Must have higher 90 day and lower normal
+matchLowerNinetyDay: true
+maxGames: 6 					# Maximum games for kingslayer
+maxDiff: 50
+mustMatch: allanchessw

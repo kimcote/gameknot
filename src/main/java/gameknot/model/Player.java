@@ -146,13 +146,13 @@ public class Player {
 	    			oppPlayer.setRatingNinetyDay(rating);
 	    		}
 	    		
-//	    		diff90Day  = Math.abs(this.getRatingNinetyDay() - oppPlayer.getRatingNinetyDay());
 	    		diffNormal = Math.abs(this.getRating()          - oppPlayer.getRating());
+	    		diff90Day  = Math.abs(this.getRatingNinetyDay() - oppPlayer.getRatingNinetyDay());
 //	    		diff = match.isNinetyDay() ? diff90Day : diffNormal;
 	    		
-//	    		if (diff90Day  <= match.getMaxDiff()
-//	    		if (diffNormal <= match.getMaxDiff()
 	    		if (diffNormal <= closestDiff
+	    		 && diff90Day  <= match.getMaxDiff()
+//	    		if (diffNormal <= match.getMaxDiff()
 	    		 && (match.isHigherNinetyDayLowerNormal()
 	    		 && this.getRating() 		  <= oppPlayer.getRating()		
 	    		 && this.getRatingNinetyDay() >= oppPlayer.getRatingNinetyDay() 

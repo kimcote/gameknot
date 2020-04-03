@@ -5,6 +5,7 @@ import java.util.Comparator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import gameknot.config.Config;
 import gameknot.model.KingSlayers;
 import gameknot.model.Ladder;
 import gameknot.model.OppositionTeam;
@@ -26,6 +27,9 @@ public class Controller {
     private KingSlayers kingslayers;
     
     @Autowired
+	private Config config;
+    
+    @Autowired
     private MyFileUtils myfileUtils;
     
     @Autowired
@@ -33,11 +37,6 @@ public class Controller {
 	
 //    @PostConstruct
 	public void mainProcess() throws Exception {
-		
-		boolean matchHigher = true; // MatchParameters with teams above us
-		boolean matchLower = false;
-		int maxGames=6; // Maximum games for kingslayer
-		int maxDiff=50;
 		
 //		List<String> files=myfileUtils.getResourceFiles(System.getProperty("java.class.path", "."));
 //		
@@ -53,13 +52,12 @@ public class Controller {
 //		html=getHTML("/team-matches.pl?team=912&active=1&finished=0&cancelled=0","",false);
 //		System.out.println(html);
 		
-		
 		//webReader.directFromURL("https://gameknot.com/team.pl?chess=912"); // 403 - Forbidden
 		kingslayers.assignPlayers();
 		kingslayers.getPlayers().sort(Comparator.comparing(Player::getName));
 		for (Player player:kingslayers.getPlayers()) {
 //			player.setCloseRating(true);
-			if (player.getActiveGames()>maxGames)
+			if (player.getActiveGames()>config.getMaxGames())
 				player.setAboveGameLimit(true);
 		}	
 		
@@ -83,11 +81,12 @@ public class Controller {
 //		setPlayerPending("pawnish", true);
 //		setPlayerStatus("rave83",false,false);
 //		setPlayerMatchable("stevers", true);
+//		setPlayerPending("thatcha", false);
 //		setPlayerStatus("white_knight48", false,false);
 //		setPlayerPending("allanchessw", true);
 		setPlayerPending("9maxmut9", true);
 		
-//		kingslayers.setMustMatch("stevers");
+		kingslayers.setMustMatch(config.getMustMatch());
 		
 //		String html=myfileUtils.myReadFile("200205.xml");
 //		html+=myfileUtils.myReadFile("200212.xml");
@@ -147,34 +146,35 @@ public class Controller {
 		 */
 		for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {
 			
-			oppTeam.setWrongRank(oppTeam.getRank()>kingslayers.getRank() && !matchLower
-							  || oppTeam.getRank()<kingslayers.getRank() && !matchHigher);
+			oppTeam.setWrongRank(oppTeam.getRank()>kingslayers.getRank() && !config.isMatchLower()
+							  || oppTeam.getRank()<kingslayers.getRank() && !config.isMatchHigher());
 			
 		}
 		
 //		setTeamPending("THE BLACK STALLION INTERNATIONAL CHESS TEAM");
 //		setTeamPending("A Castle on the KING's Court # 2"); 
-//		setTeamPending("~Canadian Bacon~");
+		setTeamPending("~Canadian Bacon~");
 //		setTeamOnly("Christ Our Redeemer"); // Capt Shirley
 //		setTeamPending("DACII LIBERI");
 //		setTeamPending("The Empire Strikes Back");
 //		setTeamPending("The Force");
 //		setTeamPending("IHS TEAM ITALIA");
-//		setTeamPending("♔ Immortal Kings ♔");
+		setTeamPending("♔ Immortal Kings ♔");
 //		setTeamPending("International Chess DOGS");
-//		setTeamPending("~✠~ KNIGHTS TEMPLAR ~✠~"); // Capt goldaric
+		setTeamPending("LUCIFER'S ARMY");
+		setTeamPending("~✠~ KNIGHTS TEMPLAR ~✠~"); // Capt goldaric
 //		setTeamPending("Masters of the game"); // Declined no reason
-//		setTeamPending("Kings of the Castle");
+		setTeamPending("Kings of the Castle");
 //		setTeamPending("The Knights of the Crystal Castle"); // Apologies but your current team rank doesn't match our criteria, but thank you for the challenge
-//		setTeamPending("Knights of the Sceptered Isle");
+		setTeamPending("Knights of the Sceptered Isle");	// Checks 90 day
 //		setTeamPending("The Outcasts");						// We prefer closer ratings. 90 day ratings is secondary parameter.
-//		setTeamPending("Peace, Love, and Bunny Rabbits");
+		setTeamPending("Peace, Love, and Bunny Rabbits");
 //		setTeamOnly("Never Look Back");
 //		setTeamPending("\" S.W.A.T. \"");
 //		setTeamPending("Scotland Forever");
 //		setTeamPending("SmAsHeDcRaBs");
 //		setTeamPending("TRITON"); // Capt Neil
-//		setTeamPending("Yeshua's Army");
+		setTeamPending("Yeshua's Army");
 		
 //		setTeamOnly("~Canadian Bacon~");
 //		setTeamOnly("Conexão Macaxeira");
@@ -209,7 +209,7 @@ public class Controller {
 				for (Player oppPlayer: oppTeam.getPlayers()) {
 					
 					if (oppPlayer.isMatchable()) {
-						oppPlayer.assignCloseRating(kingslayers,maxDiff);
+						oppPlayer.assignCloseRating(kingslayers,config.getMaxDiff());
 					}
 				}
 				
@@ -245,27 +245,27 @@ public class Controller {
 		
 		setPlayerNotThreeDay("jbbooks"); // Temp
 		/*
-		 * 
+		 * Only match with players under max Game Limit
 		 */
 //		for (int i=maxGames;i<=maxGames;i++) { 
-//			
-//			System.out.println("\nActive Games Limit="+i);
-//			
-//			for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {	
-//		
-//				if (oppTeam.isMatchable()) { // at this point only pending or wrong rank or Players NotThreeDay
-//				
-//					for (Player oppPlayer: oppTeam.getPlayers()) {	
-//						
-//						if (oppPlayer.isAvailable() && !oppPlayer.isPending())
-//							oppPlayer.setAboveGameLimit(oppPlayer.getActiveGames()>i);
-//					}
-//		
-//					System.out.println(oppTeam.getInfo());
-//				}
-//			}	
+			
+		System.out.println("\nActive Games Limit="+config.getMaxGames());
 		
-//			matchParams.run(60, true,true); // Higher 90 Day Rating - MatchParameters on 90 day
+		for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {	
+	
+			if (oppTeam.isMatchable()) { // at this point only pending or wrong rank or Players NotThreeDay
+			
+				for (Player oppPlayer: oppTeam.getPlayers()) {	
+					
+					if (!oppPlayer.isPending())
+						oppPlayer.setAboveGameLimit(oppPlayer.getActiveGames()>config.getMaxGames());
+				}
+	
+				System.out.println(oppTeam.getInfo());
+			}
+		}	
+	
+		matchParams.run(config.getMaxDiff(), true); // Higher 90 Day Rating - MatchParameters on 90 day
 //			matchParams.run(60, true,false); // Higher 90 day rating - match on normal
 //		}
 		
@@ -280,7 +280,7 @@ public class Controller {
 		 * No Active Games Limit on opposition.
 		 */
 		
-//		System.out.println("\nActive Games Limit=any");
+		System.out.println("\nActive Games Limit=any");
 //		
 //		for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {	
 //				
@@ -304,9 +304,11 @@ public class Controller {
 //		}	
 		
 		
-		matchParams.run(maxDiff, true); // Higher 90 Day Rating 
-//		matchParams.run(50, true,false); // Higher 90 day rating - match on normal
-//		matchParams.run(maxDiff, false); // any
+		if (config.isMatchHigherNinetyDay())
+			matchParams.run(config.getMaxDiff(), true); // Higher 90 Day Rating 
+		
+		if (config.isMatchLowerNinetyDay())
+			matchParams.run(config.getMaxDiff(), false); // any
 		
 		/* 
 		 * Search below Kingslayer rank

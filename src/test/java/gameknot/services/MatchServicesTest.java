@@ -208,13 +208,17 @@ public class MatchServicesTest extends KingSlayersSetup{
 		List<OppositionTeam> oppositionTeams = new ArrayList<OppositionTeam>();
 		oppTeam = setupOppositionTeam(2);
 		oppTeam.getPlayers().get(0).setRating(1440);
+		oppTeam.getPlayers().get(0).setRatingNinetyDay(1490);
 		oppTeam.getPlayers().get(1).setRating(1540);
+		oppTeam.getPlayers().get(1).setRatingNinetyDay(1590);
 		
 		oppositionTeams.add(oppTeam);
 		
 		oppTeam = setupOppositionTeam(2);
 		oppTeam.getPlayers().get(0).setRating(1640);
+		oppTeam.getPlayers().get(0).setRatingNinetyDay(1690);
 		oppTeam.getPlayers().get(1).setRating(1740);
+		oppTeam.getPlayers().get(1).setRatingNinetyDay(1790);
 		
 		oppositionTeams.add(oppTeam);
 
