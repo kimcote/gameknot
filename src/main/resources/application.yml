@@ -4,4 +4,17 @@ matchHigherNinetyDay: true		# Must have higher 90 day and lower normal
 matchLowerNinetyDay: true
 maxGames: 6 					# Maximum games for kingslayer
 maxDiff: 50
-mustMatch: allanchessw
+mustMatch:
+playerPending:
+  - 9maxmut9
+teamPending:
+  - A Castle on the KING's Court # 2
+#  - DACII LIBERI
+  - IHS TEAM ITALIA
+#  - Immortal Kings
+  - The Irish Pride
+  - The Knights of the Crystal Castle
+#  - KNIGHTS TEMPLAR
+  - LUCIFER'S ARMY
+#  - SmAsHeDcRaBs
+#  - Yeshua's Army

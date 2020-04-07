@@ -1,3 +1,4 @@
+
 package gameknot.controller;
 
 import java.util.Comparator;
@@ -55,36 +56,14 @@ public class Controller {
 		//webReader.directFromURL("https://gameknot.com/team.pl?chess=912"); // 403 - Forbidden
 		kingslayers.assignPlayers();
 		kingslayers.getPlayers().sort(Comparator.comparing(Player::getName));
+		
 		for (Player player:kingslayers.getPlayers()) {
-//			player.setCloseRating(true);
-			if (player.getActiveGames()>config.getMaxGames())
-				player.setAboveGameLimit(true);
+			player.setAboveGameLimit(player.getActiveGames()>config.getMaxGames());
 		}	
 		
-//		setPlayerPending("abythomas1",false);
-//		setPlayerPending("darren6464",true);
-//		setPlayerMatchable("ehenrymay",true);
-//		setPlayerPending("evilgm",false);
-//		setPlayerPending("jom77",false);
-//		setPlayerMatchable("jonah1938",true);
-//		setPlayerPending("joelw",false);
-//		setPlayerStatus("juhu", false, false);
-//		setPlayerMatchable("madscan",true);
-//		setPlayerMatchable("mickey156",true);
-//		setPlayerPending("kila01",false);
-//		setPlayerPending("kimcote",false);
-//		setPlayerPending("larksnest",false);
-//		setPlayerPending("lesktheglut", true);
-//		setPlayerPending("gavish",false);
-//		setPlayerMatchable("greenlord",false);
-//		setPlayerPending("olderchessplayer",false);
-//		setPlayerPending("pawnish", true);
-//		setPlayerStatus("rave83",false,false);
-//		setPlayerMatchable("stevers", true);
-//		setPlayerPending("thatcha", false);
-//		setPlayerStatus("white_knight48", false,false);
-//		setPlayerPending("allanchessw", true);
-		setPlayerPending("9maxmut9", true);
+		for (String playerName: config.getPlayerPending()) {
+			setPlayerPending(playerName);
+		}
 		
 		kingslayers.setMustMatch(config.getMustMatch());
 		
@@ -151,37 +130,9 @@ public class Controller {
 			
 		}
 		
-//		setTeamPending("THE BLACK STALLION INTERNATIONAL CHESS TEAM");
-//		setTeamPending("A Castle on the KING's Court # 2"); 
-		setTeamPending("~Canadian Bacon~");
-//		setTeamOnly("Christ Our Redeemer"); // Capt Shirley
-//		setTeamPending("DACII LIBERI");
-//		setTeamPending("The Empire Strikes Back");
-//		setTeamPending("The Force");
-//		setTeamPending("IHS TEAM ITALIA");
-		setTeamPending("♔ Immortal Kings ♔");
-//		setTeamPending("International Chess DOGS");
-		setTeamPending("LUCIFER'S ARMY");
-		setTeamPending("~✠~ KNIGHTS TEMPLAR ~✠~"); // Capt goldaric
-//		setTeamPending("Masters of the game"); // Declined no reason
-		setTeamPending("Kings of the Castle");
-//		setTeamPending("The Knights of the Crystal Castle"); // Apologies but your current team rank doesn't match our criteria, but thank you for the challenge
-		setTeamPending("Knights of the Sceptered Isle");	// Checks 90 day
-//		setTeamPending("The Outcasts");						// We prefer closer ratings. 90 day ratings is secondary parameter.
-		setTeamPending("Peace, Love, and Bunny Rabbits");
-//		setTeamOnly("Never Look Back");
-//		setTeamPending("\" S.W.A.T. \"");
-//		setTeamPending("Scotland Forever");
-//		setTeamPending("SmAsHeDcRaBs");
-//		setTeamPending("TRITON"); // Capt Neil
-		setTeamPending("Yeshua's Army");
-		
-//		setTeamOnly("~Canadian Bacon~");
-//		setTeamOnly("Conexão Macaxeira");
-//		setTeamOnly("~✠~THE CRUSADERS ~✠~ International Chess Team");
-//		setTeamOnly("▄▀|GLOBAL BOUNTY HUNTERS|▄▀"); // doesnt play 3 day matches
-//		setTeamOnly("THE BARMY ARMY");
-//		Kings of the Castle
+		for (String teamName: config.getTeamPending()) {
+			setTeamPending(teamName);
+		} 
 
 		System.out.println("Ladder Team Count="+ladder.getOppositionTeams().size());
 		System.out.println("Ladder Teams Matchable="+ladder.getCountMatchable());
@@ -224,6 +175,7 @@ public class Controller {
 
 		setPlayerNotThreeDay("rsinq"); // THE BLACK STALLION INTERNATIONAL CHESS TEAM
 		setPlayerNotThreeDay("bobsogood"); // The Force
+		setPlayerNotThreeDay("ginquita"); // IHS TEAM ITALIA
 		setPlayerNotThreeDay("cloud-runner"); // The Knights of the Crystal Castle
 		setPlayerNotThreeDay("withstand"); // The Knights of the Crystal Castle
 		setPlayerNotThreeDay("dugstool");
@@ -239,6 +191,7 @@ public class Controller {
 		setPlayerNotThreeDay("mervynrothwell");
 		setPlayerNotThreeDay("adelzaki");
 		setPlayerNotThreeDay("sculldog"); // The Outcasts
+		setPlayerNotThreeDay("makiawel"); // Triton
 		setPlayerNotThreeDay("gameon007"); //Yeshua's Army
 		setPlayerNotThreeDay("shawnbriscoe"); // Yeshua's Army
 		setPlayerNotThreeDay("delacowboy"); // Yeshua's Army
@@ -281,28 +234,23 @@ public class Controller {
 		 */
 		
 		System.out.println("\nActive Games Limit=any");
-//		
-//		for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {	
-//				
-//			if (oppTeam.getPlayers()!=null) {
-//				
-//				for (Player oppPlayer: oppTeam.getPlayers()) {
-//					oppPlayer.setAboveGameLimit(false);
-//				}
-//			}
-//		}
 		
-//		for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {	
-//	
-//			if (kingslayers.getMatchablePlayers() <2)
-//				break;
-//			
-//			if (oppTeam.isMatchable()) { // at this point only pending or wrong rank
-//				
-//				System.out.println(oppTeam.getInfo());
-//			}
-//		}	
-		
+		for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {	
+			
+			if (kingslayers.getMatchablePlayers() <2)
+				break;
+				
+			if (oppTeam.getPlayers()!=null) {
+				
+				for (Player oppPlayer: oppTeam.getPlayers()) {
+					oppPlayer.setAboveGameLimit(false);
+				}
+			}
+					
+			if (oppTeam.isMatchable()) {		
+				System.out.println(oppTeam.getInfo());
+			}
+		}	
 		
 		if (config.isMatchHigherNinetyDay())
 			matchParams.run(config.getMaxDiff(), true); // Higher 90 Day Rating 
@@ -382,16 +330,12 @@ public class Controller {
 			}
 		}
 	}
-	private void setPlayerPending(String playerName, boolean pending) {
-		setPlayerStatus(playerName, pending,false);
-	}
-	private void setPlayerStatus(String playerName, boolean pending, boolean aboveLimit) {
+	private void setPlayerPending(String playerName) {
 		
 		for (Player player:kingslayers.getPlayers()) {
 			
 			if (player.getName().equals(playerName)) {
-				player.setPending(pending);
-				player.setAboveGameLimit(aboveLimit);
+				player.setPending(true);
 			}
 		}
 	}

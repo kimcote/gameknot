@@ -1,5 +1,7 @@
 package gameknot.config;
 
+import java.util.List;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -19,4 +21,6 @@ public class Config {
 	private int maxGames;
 	private int maxDiff;
 	private String mustMatch;
+	private List<String> playerPending;
+	private List<String> teamPending;
 }
