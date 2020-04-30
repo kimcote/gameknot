@@ -176,6 +176,7 @@ public class Controller {
 		setPlayerNotThreeDay("rsinq"); // THE BLACK STALLION INTERNATIONAL CHESS TEAM
 		setPlayerNotThreeDay("bobsogood"); // The Force
 		setPlayerNotThreeDay("ginquita"); // IHS TEAM ITALIA
+		setPlayerNotThreeDay("feisty_pawn"); // IHS TEAM ITALIA
 		setPlayerNotThreeDay("cloud-runner"); // The Knights of the Crystal Castle
 		setPlayerNotThreeDay("withstand"); // The Knights of the Crystal Castle
 		setPlayerNotThreeDay("dugstool");
