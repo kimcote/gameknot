@@ -22,5 +22,6 @@ public class Config {
 	private int maxDiff;
 	private String mustMatch;
 	private List<String> playerPending;
+	private List<String> playerNotPending;
 	private List<String> teamPending;
 }

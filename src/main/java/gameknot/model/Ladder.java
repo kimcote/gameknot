@@ -28,6 +28,11 @@ public class Ladder {
     	
     	return count;
     }
+
+	public void getRecentMatches() {
+		String html=HTMLReader.getHTML("/team_ch_list.pl");
+		System.out.println(html);
+	}
     
     
 }

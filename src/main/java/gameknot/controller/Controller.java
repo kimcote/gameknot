@@ -62,7 +62,11 @@ public class Controller {
 		}	
 		
 		for (String playerName: config.getPlayerPending()) {
-			setPlayerPending(playerName);
+			setPlayerPending(playerName, true);
+		}
+		
+		for (String playerName: config.getPlayerNotPending()) {
+			setPlayerPending(playerName, false);
 		}
 		
 		kingslayers.setMustMatch(config.getMustMatch());
@@ -116,6 +120,10 @@ public class Controller {
 				break;
 			}	
 		}
+		/*
+		 * Get teams with whom match has started within 3 days
+		 */
+//		ladder.getRecentMatches();
 		
 //		kingslayers.setRank(20);
 		
@@ -331,12 +339,12 @@ public class Controller {
 			}
 		}
 	}
-	private void setPlayerPending(String playerName) {
+	private void setPlayerPending(String playerName, boolean pending) {
 		
 		for (Player player:kingslayers.getPlayers()) {
 			
 			if (player.getName().equals(playerName)) {
-				player.setPending(true);
+				player.setPending(pending);
 			}
 		}
 	}
