@@ -3,6 +3,7 @@ package gameknot.controller;
 
 import java.util.Comparator;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -129,18 +130,27 @@ public class Controller {
 		
 		System.out.println("Kingslayers Rank="+kingslayers.getRank());
 		/*
+		 * If matching only to one team, set the rest to pending.
+		 */
+		if (!StringUtils.isEmpty(config.getTeamOnly())) {
+			setTeamOnly(config.getTeamOnly());
+		}
+				
+		/*
 		 * Set matchable of opposition dependent on rank 
 		 */
-		for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {
+		else {
+			for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {
+				
+				oppTeam.setWrongRank(oppTeam.getRank()>kingslayers.getRank() && !config.isMatchLower()
+								  || oppTeam.getRank()<kingslayers.getRank() && !config.isMatchHigher());
+				
+			}
 			
-			oppTeam.setWrongRank(oppTeam.getRank()>kingslayers.getRank() && !config.isMatchLower()
-							  || oppTeam.getRank()<kingslayers.getRank() && !config.isMatchHigher());
-			
+			for (String teamName: config.getTeamPending()) {
+				setTeamPending(teamName);
+			}
 		}
-		
-		for (String teamName: config.getTeamPending()) {
-			setTeamPending(teamName);
-		} 
 
 		System.out.println("Ladder Team Count="+ladder.getOppositionTeams().size());
 		System.out.println("Ladder Teams Matchable="+ladder.getCountMatchable());
@@ -206,6 +216,11 @@ public class Controller {
 		setPlayerNotThreeDay("delacowboy"); // Yeshua's Army
 		
 		setPlayerNotThreeDay("jbbooks"); // Temp
+		
+//		setOppPlayerNotPending("thunder-wood");
+//		setOppPlayerNotPending("shepstar");
+//		setOppPlayerNotPending("jack_ryan");
+		
 		/*
 		 * Only match with players under max Game Limit
 		 */
@@ -358,6 +373,21 @@ public class Controller {
 				for (Player oppPlayer: oppTeam.getPlayers()) {
 					if (oppPlayer.getName().equals(playerName)) {
 						oppPlayer.setNotThreeDay(true);
+					}
+				}	
+			}
+		}
+	}
+	
+	private void setOppPlayerNotPending(String playerName) {
+		
+		for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {
+			
+			if (oppTeam.getPlayers()!=null) {
+				
+				for (Player oppPlayer: oppTeam.getPlayers()) {
+					if (oppPlayer.getName().equals(playerName)) {
+						oppPlayer.setPending(false);
 					}
 				}	
 			}

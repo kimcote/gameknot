@@ -23,5 +23,6 @@ public class Config {
 	private String mustMatch;
 	private List<String> playerPending;
 	private List<String> playerNotPending;
+	private String teamOnly;
 	private List<String> teamPending;
 }
