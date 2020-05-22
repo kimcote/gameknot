@@ -16,6 +16,7 @@ public class Config {
 
 	private boolean matchHigher ;
 	private boolean matchLower;
+	private int kingslayerRank =0;
 	private boolean matchHigherNinetyDay;
 	private boolean matchLowerNinetyDay;
 	private int maxGames;

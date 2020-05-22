@@ -1,37 +1,40 @@
 matchHigher: true 				# MatchParameters with teams above us
 matchLower: false
+kingslayerRank: 20
 matchHigherNinetyDay: true		# Must have higher 90 day and lower normal
 matchLowerNinetyDay: true
-maxGames: 6 					# Maximum games for kingslayer
+maxGames: 3 					# Maximum games for kingslayer
 maxDiff: 50
 mustMatch: 
 playerPending:
   - 9maxmut9
 playerNotPending:
-#  - kila01
+  - 
 teamOnly: 
 teamPending:
 #  - ALCHEMY
-  - A Castle on the KING's Court # 2 // not good match ups
+#  - A Castle on the KING's Court # 2 // not good match ups
 #  - Canadian Bacon
-##  - Christ Our Redeemer
-##  - Cowboys and Cowgirls of the Old West
+#  - Chess Galaxy
+#  - Christ Our Redeemer
+#  - Cowboys and Cowgirls of the Old West
 #  - DACII LIBERI
-##  - Dark Affair
-###  - IHS TEAM ITALIA
-##  - Immortal Kings
-###  - The Irish Pride
+#  - Dark Affair
+#  - IHS TEAM ITALIA
+#  - Immortal Kings
+#  - The Irish Pride
 #  - Kings of the Castle
-  - The Knights of the Crystal Castle
-##  - Knights of the Sceptered Isle # too lopsided
-  - KNIGHTS TEMPLAR
-  - LUCIFER'S ARMY
-##  - Masters of the game
+#  - The Knights of the Crystal Castle
+#  - Knights of the Sceptered Isle # too lopsided
+#  - KNIGHTS TEMPLAR # 14/05/20
+#  - LUCIFER'S ARMY
+#  - Masters of the game
 #  - Never Look Back
 #  - Peace, Love, and Bunny Rabbits
-##  - Romania
+#  - Phoenix of the Kings Immortal # 14/05/20
+#  - Romania
 #  - Salt and Light
-##  - SmAsHeDcRaBs
-##  - STONEDHENGE TRIBE
-  - TRITON
+#  - SmAsHeDcRaBs
+#  - STONEDHENGE TRIBE
+#  - TRITON
 #  - Yeshua's Army

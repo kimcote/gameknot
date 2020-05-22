@@ -126,7 +126,8 @@ public class Controller {
 		 */
 //		ladder.getRecentMatches();
 		
-//		kingslayers.setRank(20);
+		if (config.getKingslayerRank()!=0)
+			kingslayers.setRank(config.getKingslayerRank());
 		
 		System.out.println("Kingslayers Rank="+kingslayers.getRank());
 		/*
