@@ -202,6 +202,7 @@ public class Controller {
 		setPlayerNotThreeDay("unicorn88"); // Lucifers Army
 		setPlayerNotThreeDay("hexenhammer"); // Lucifers Army
 		setPlayerNotThreeDay("dirk_winwood"); // Lucifers Army
+		setPlayerNotThreeDay("bojim"); // Never Look Back
 		setPlayerNotThreeDay("souraj");
 		setPlayerNotThreeDay("king_0_nothing");
 		setPlayerNotThreeDay("qr19kaash");
@@ -212,6 +213,7 @@ public class Controller {
 		setPlayerNotThreeDay("adelzaki");
 		setPlayerNotThreeDay("sculldog"); // The Outcasts
 		setPlayerNotThreeDay("makiawel"); // Triton
+		setPlayerNotThreeDay("charlee"); // Triton
 		setPlayerNotThreeDay("gameon007"); //Yeshua's Army
 		setPlayerNotThreeDay("shawnbriscoe"); // Yeshua's Army
 		setPlayerNotThreeDay("delacowboy"); // Yeshua's Army

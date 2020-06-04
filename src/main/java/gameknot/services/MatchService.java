@@ -155,9 +155,9 @@ public class MatchService {
         	}
         	
         	if (oppTeam.isMatchable()) {
-	        	System.out.println("Rank="+oppTeam.getRank() 
-								+ " Team="+oppTeam.getName()
-								+ " Matchable Players="+oppTeam.getMatchablePlayers());
+	        	System.out.println("\nRank="+oppTeam.getRank() 
+								  + " Team="+oppTeam.getName()
+								  + " Matchable Players="+oppTeam.getMatchablePlayers());
 	      
         		kingslayers.clearBestMatches();		        	
 	        	kingslayers.assignBestMatch(matchParams,oppTeam); // 1st
@@ -192,7 +192,7 @@ public class MatchService {
 		        		if (matchedKSPlayer2!=null) {
 		        			matchedKSPlayer2.setMatched(true);
 		        			matchedKSPlayer2.getBestMatch().setMatched(true);
-//			        		System.out.println("Set MatchParameters 2 ks="+getPlayerDetails(matchedKSPlayer2)+ " Opp="+getPlayerDetails(matchedOppPlayer2));
+			        		System.out.println("Opposition="+oppTeam.getName());
 		        			displayMatch(matchedKSPlayer1, matchedKSPlayer2, matchedKSPlayer1.getBestMatch(), matchedKSPlayer2.getBestMatch());
 		        			oppTeam.setPending(true);
 		        			
