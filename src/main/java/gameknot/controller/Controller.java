@@ -192,33 +192,33 @@ public class Controller {
 			}		
 		}	
 
-		setPlayerNotThreeDay("rsinq"); // THE BLACK STALLION INTERNATIONAL CHESS TEAM
-		setPlayerNotThreeDay("bobsogood"); // The Force
-		setPlayerNotThreeDay("ginquita"); // IHS TEAM ITALIA
-		setPlayerNotThreeDay("feisty_pawn"); // IHS TEAM ITALIA
-		setPlayerNotThreeDay("cloud-runner"); // The Knights of the Crystal Castle
-		setPlayerNotThreeDay("withstand"); // The Knights of the Crystal Castle
-		setPlayerNotThreeDay("dugstool");
-		setPlayerNotThreeDay("unicorn88"); // Lucifers Army
-		setPlayerNotThreeDay("hexenhammer"); // Lucifers Army
-		setPlayerNotThreeDay("dirk_winwood"); // Lucifers Army
-		setPlayerNotThreeDay("bojim"); // Never Look Back
-		setPlayerNotThreeDay("souraj");
-		setPlayerNotThreeDay("king_0_nothing");
-		setPlayerNotThreeDay("qr19kaash");
-		setPlayerNotThreeDay("linasto");
-		setPlayerNotThreeDay("smaryam9");
-		setPlayerNotThreeDay("vince2012");
-		setPlayerNotThreeDay("mervynrothwell");
-		setPlayerNotThreeDay("adelzaki");
-		setPlayerNotThreeDay("sculldog"); // The Outcasts
-		setPlayerNotThreeDay("makiawel"); // Triton
-		setPlayerNotThreeDay("charlee"); // Triton
-		setPlayerNotThreeDay("gameon007"); //Yeshua's Army
-		setPlayerNotThreeDay("shawnbriscoe"); // Yeshua's Army
-		setPlayerNotThreeDay("delacowboy"); // Yeshua's Army
-		
-		setPlayerNotThreeDay("jbbooks"); // Temp
+//		setPlayerNotThreeDay("rsinq"); // THE BLACK STALLION INTERNATIONAL CHESS TEAM
+//		setPlayerNotThreeDay("bobsogood"); // The Force
+//		setPlayerNotThreeDay("ginquita"); // IHS TEAM ITALIA
+//		setPlayerNotThreeDay("feisty_pawn"); // IHS TEAM ITALIA
+//		setPlayerNotThreeDay("cloud-runner"); // The Knights of the Crystal Castle
+//		setPlayerNotThreeDay("withstand"); // The Knights of the Crystal Castle
+//		setPlayerNotThreeDay("dugstool");
+//		setPlayerNotThreeDay("unicorn88"); // Lucifers Army
+//		setPlayerNotThreeDay("hexenhammer"); // Lucifers Army
+//		setPlayerNotThreeDay("dirk_winwood"); // Lucifers Army
+//		setPlayerNotThreeDay("bojim"); // Never Look Back
+//		setPlayerNotThreeDay("souraj");
+//		setPlayerNotThreeDay("king_0_nothing");
+//		setPlayerNotThreeDay("qr19kaash");
+//		setPlayerNotThreeDay("linasto");
+//		setPlayerNotThreeDay("smaryam9");
+//		setPlayerNotThreeDay("vince2012");
+//		setPlayerNotThreeDay("mervynrothwell");
+//		setPlayerNotThreeDay("adelzaki");
+//		setPlayerNotThreeDay("sculldog"); // The Outcasts
+//		setPlayerNotThreeDay("makiawel"); // Triton
+//		setPlayerNotThreeDay("charlee"); // Triton
+//		setPlayerNotThreeDay("gameon007"); //Yeshua's Army
+//		setPlayerNotThreeDay("shawnbriscoe"); // Yeshua's Army
+//		setPlayerNotThreeDay("delacowboy"); // Yeshua's Army
+//		
+//		setPlayerNotThreeDay("jbbooks"); // Temp
 		
 //		setOppPlayerNotPending("thunder-wood");
 //		setOppPlayerNotPending("shepstar");
