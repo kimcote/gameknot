@@ -1,28 +1,33 @@
 matchHigher: true 				# MatchParameters with teams above us
 matchLower: false
-kingslayerRank: 0
+kingslayerRank: 20
 matchHigherNinetyDay: true		# Must have higher 90 day and lower normal
-matchLowerNinetyDay: false
-maxGames: 8 					# Maximum games for kingslayer
+matchLowerNinetyDay: true
+maxGames: 9				# Maximum games for kingslayer
 maxDiff: 50
 mustMatch: 
 playerPending:
-  - 9maxmut9
+#  - 9maxmut9
+  - madscan
+  - allanchessw
+  - kimcote
+  - kila01
+  - joelw
 playerNotPending:
-  - 
 teamOnly:
 teamPending:
 #  - ALCHEMY
 #  - All Stars Honoured
 #  - A Castle on the KING's Court # 2 // not good match ups
-#  - Canadian Bacon
+  - Canadian Bacon
 #  - Chess Galaxy
 #  - Christ Our Redeemer
+#  - Conexão Macaxeira
 #  - Cowboys and Cowgirls of the Old West
 #  - DACII LIBERI
 #  - Dark Affair
 #  - The Fighting Warriors
-  - The Force
+#  - The Force
 #  - IHS TEAM ITALIA
 #  - Immortal Kings
 #  - INTRPIDUS
@@ -30,10 +35,10 @@ teamPending:
 #  - Italians Do It Better
 #  - Kings of the Castle
 #  - Knightmare
-#  - The Knights of the Crystal Castle
-#  - Knights of the Sceptered Isle # too lopsided
-  - KNIGHTS TEMPLAR
-#  - LUCIFER'S ARMY
+#  - The Knights of the Crystal Castle  # pass 
+  - Knights of the Sceptered Isle # too lopsided
+#  - KNIGHTS TEMPLAR
+  - LUCIFER'S ARMY
 #  - Masters of the game
 #  - Never Look Back                # 28/05/20 Cant match Kimcote
   - Peace, Love, and Bunny Rabbits # 27/05/20 cant match 
@@ -45,6 +50,7 @@ teamPending:
 #  - SmAsHeDcRaBs
 #  - STONEDHENGE TRIBE
 #  - S.W.A.T.
+#  - TEAM ATTITUDE
   - TRITON
 #  - Underdogs
 #  - The White Knight
