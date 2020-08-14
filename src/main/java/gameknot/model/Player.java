@@ -113,14 +113,24 @@ public class Player {
     }
     
     public String getInfo() {
-    	return "Name="+this.name
-    		  + " Matchable="+isMatchable()
+//    	return "Name="+this.name
+//    		  + " Matchable="+isMatchable()
 //    		  + " Available=" + this.available 
-    		  + " Pending="+ this.pending
-    		  + " AboveGameLimit=" + this.aboveGameLimit 
-    		  + " NotThreeDay=" + this.notThreeDay 
-    		  + " Matched=" + this.matched 
-    		  + " CloseRating="+this.closeRating;
+//    		  + " Pending="+ this.pending
+//    		  + " AboveGameLimit=" + this.aboveGameLimit 
+//    		  + " NotThreeDay=" + this.notThreeDay 
+//    		  + " Matched=" + this.matched 
+//   		  + " CloseRating="+this.closeRating;
+    	String pending = this.isPending()? " Pending="+this.getPendingGames():"";
+    	
+		return (rightpad(this.getName(),16)
+				+" Matchable="		+String.format("%1$5s", this.isMatchable())
+//				+" Above Game List="+this.isAboveGameLimit()
+//				+" Pending="		+this.isPending()
+				+" Rating="			+this.getRating()
+				+" 90Day="	+String.format("%1$4s",this.getRatingNinetyDay())
+				+" Active=" +String.format("%1$2s",this.getActiveGames())
+				+  pending);
     }
     
     public String getMatchInfo() {
@@ -182,5 +192,9 @@ public class Player {
 	public void addLoss() {
 		this.losses++;
 		this.points--;
+	}
+	
+	private String rightpad(String text, int length) {
+	    return String.format("%-" + length + "." + length + "s", text);
 	}
 }

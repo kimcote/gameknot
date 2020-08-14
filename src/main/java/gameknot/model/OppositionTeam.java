@@ -36,8 +36,8 @@ public class OppositionTeam extends Team {
     private boolean wrongRank;
     
     public boolean isMatchable () {
-    	return !pending && !wrongRank && getPendingGames()<20 
-    		&& (players==null || getMatchablePlayers()>1);
+    	return !pending && !wrongRank && getPendingGames()<20;
+    		//&& (players==null || getMatchablePlayers()>1);
     }
     public String getUnMatchableReasons () {
     	String s="";
@@ -51,7 +51,7 @@ public class OppositionTeam extends Team {
     public String getInfo() {
     	return "Rank=" + leftPad(this.getRank(),2) 
 		+ " Team="+StringUtils.rightPad(this.getName(),45)
-		+ " Pending Games="+leftPad(this.getPendingGames(),2)
+//		+ " Pending Games="+leftPad(this.getPendingGames(),2)
 //					+ " Active Matches="+this.getActiveMatches() 
 		+ " Available Players="+leftPad(this.players.size(),3)
 		+ " Pending Players="+this.getPendingPlayers()
