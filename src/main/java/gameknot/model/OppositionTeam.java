@@ -15,13 +15,13 @@ public class OppositionTeam extends Team {
 	public OppositionTeam() {}
 
     public OppositionTeam(String name, int rank, List<Player> players) {
-        this.name = name.replaceAll("[^a-zA-Z0-9 ,']", "");
+        this.name = name.replaceAll("[^a-zA-Z0-9 ,']", "").trim();
         this.rank=rank;
         this.players = players;
     }
     
     public OppositionTeam(String name, int rank, String link) {
-        this.name = name.replaceAll("[^a-zA-Z0-9 ,']", "");
+        this.name = name.replaceAll("[^a-zA-Z0-9 ,']", "").trim();
         this.rank=rank;
         this.link=link;
     }
@@ -48,18 +48,24 @@ public class OppositionTeam extends Team {
     	return s;
     }
     
-    public String getInfo() {
+    public String getInfoPlayers() {
     	return "Rank=" + leftPad(this.getRank(),2) 
 		+ " Team="+StringUtils.rightPad(this.getName(),45)
 //		+ " Pending Games="+leftPad(this.getPendingGames(),2)
 //					+ " Active Matches="+this.getActiveMatches() 
-		+ " Available Players="+leftPad(this.players.size(),3)
-		+ " Pending Players="+this.getPendingPlayers()
-		+ " Above Game Limit Players=" + this.getAboveGameLimitPlayers()
-		+ " Close Rating Players="+leftPad(this.getCloseRatingPlayers(),2)
-		+ " Matchable Players="+this.getMatchablePlayers();
+		+ " Players:"
+		+ " Available="+leftPad(this.players.size(),3)
+		+ " Pending="+this.getPendingPlayers();
     }
     
+    public String getInfoGameLimit() {
+    	return "\nRank=" + leftPad(this.getRank(),2) 
+		+ " Team="+StringUtils.rightPad(this.getName(),45)
+		+ " Players:"
+		+ " AboveGameLimit=" + this.getAboveGameLimitPlayers()
+		+ " CloseRating="+leftPad(this.getCloseRatingPlayers(),2)
+		+ " Matchable="+this.getMatchablePlayers();
+    }
     public int getMatchablePlayers() {
 		int count=0;
 		
@@ -163,6 +169,6 @@ public class OppositionTeam extends Team {
 //		return count;
 //	}
 	private String leftPad(int i, int len) {
-		return StringUtils.left(String.valueOf(i), len);
+		return StringUtils.leftPad(String.valueOf(i), len);
 	}
 }

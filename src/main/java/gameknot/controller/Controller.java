@@ -165,7 +165,7 @@ public class Controller {
 					}
 				}
 				
-				System.out.println(oppTeam.getInfo());
+				System.out.println(oppTeam.getInfoPlayers());
 				
 //				for (Player oppPlayer: oppTeam.getPlayers()) {
 //					System.out.println(oppPlayer.getInfo());
@@ -199,7 +199,7 @@ public class Controller {
 								oppPlayer.setAboveGameLimit(oppPlayer.getActiveGames()>games);
 						}
 			
-						System.out.println(oppTeam.getInfo());
+						System.out.println(oppTeam.getInfoGameLimit());
 					}
 				}	
 		
@@ -239,7 +239,7 @@ public class Controller {
 								oppPlayer.setAboveGameLimit(oppPlayer.getActiveGames()>games);
 						}
 			
-						System.out.println(oppTeam.getInfo());
+						System.out.println(oppTeam.getInfoGameLimit());
 					}
 				}	
 				
@@ -271,7 +271,7 @@ public class Controller {
 						oppPlayer.setAboveGameLimit(false);
 				}
 	
-				System.out.println(oppTeam.getInfo());
+//				System.out.println(oppTeam.getInfoGameLimit());
 			}
 		}
 	}

@@ -31,10 +31,11 @@ public class MatchService {
        
     	String msg=new java.util.Date().toString();
     	
-    	msg+= " matchOneAtATime ";
-    	msg+= " Max Diff="+matchParams.getMaxDiff();
-    	msg+= (matchParams.isHigherNinetyDayLowerNormal()) ?  " Higher Ninety Day Lower Normal ":" any ";
-    	msg+= (matchParams.isNinetyDay()) ? "Match Ranking=Ninety Day" : "MatchParameters=Normal";
+    	msg+= " MaxDiff="+matchParams.getMaxDiff();
+    	msg+= " Priority=";
+    	msg+= (matchParams.isHigherNinetyDayLowerNormal()) ?  "Higher90Day&LowerNormal ":"any";
+    	msg+=" MatchRanking=";
+    	msg+= (matchParams.isNinetyDay()) ? "90Day" : "Normal";
 		
 		System.out.println(msg);
 //        System.out.println("ladder Teams To Match="+ladder.getOppositionTeams().size());
@@ -46,9 +47,7 @@ public class MatchService {
         	}
         	
         	if (oppTeam.isMatchable()) {
-	        	System.out.println("\nRank="+oppTeam.getRank() 
-								  + " Team="+oppTeam.getName()
-								  + " Matchable Players="+oppTeam.getMatchablePlayers());
+	        	System.out.println(oppTeam.getInfoGameLimit());
 	      
         		kingslayers.clearBestMatches();		        	
 	        	kingslayers.assignBestMatch(matchParams,oppTeam); // 1st
