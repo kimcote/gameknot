@@ -157,13 +157,7 @@ public class Controller {
 			
 			if (oppTeam.isMatchable()) { // at this point only pending or wrong rank
 				oppTeam.assignPlayers();
-				
-				for (Player oppPlayer: oppTeam.getPlayers()) {
-					
-					if (oppPlayer.isMatchable()) {
-						oppPlayer.assignCloseRating(kingslayers,config.getMaxDiff());
-					}
-				}
+				oppTeam.assignCloseRating(kingslayers, config.getMaxDiff());
 				
 				System.out.println(oppTeam.getInfoPlayers());
 				
@@ -190,17 +184,7 @@ public class Controller {
 			if (kingslayers.getMatchablePlayers()>=2) {
 				
 				for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {	
-			
-					if (oppTeam.isMatchable()) { // too many pending games or wrong rank
-					
-						for (Player oppPlayer: oppTeam.getPlayers()) {	
-							
-							if (!oppPlayer.isPending())
-								oppPlayer.setAboveGameLimit(oppPlayer.getActiveGames()>games);
-						}
-			
-						System.out.println(oppTeam.getInfoGameLimit());
-					}
+					oppTeam.assignAboveGameLimit(games);
 				}	
 		
 				matchParams.run(config.getMaxDiff(), true); // Higher 90 Day Rating - MatchParameters on 90 day
@@ -230,17 +214,7 @@ public class Controller {
 			if (kingslayers.getMatchablePlayers()>=2) {
 				
 				for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {	
-			
-					if (oppTeam.isMatchable()) { // at this point only pending or wrong rank or Players NotThreeDay
-					
-						for (Player oppPlayer: oppTeam.getPlayers()) {	
-							
-							if (!oppPlayer.isPending())
-								oppPlayer.setAboveGameLimit(oppPlayer.getActiveGames()>games);
-						}
-			
-						System.out.println(oppTeam.getInfoGameLimit());
-					}
+					oppTeam.assignAboveGameLimit(games);
 				}	
 				
 				matchParams.run(config.getMaxDiff(), false); // any

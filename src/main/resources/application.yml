@@ -1,47 +1,49 @@
 matchHigher: true 				# MatchParameters with teams above us
 matchLower: false
-kingslayerRank: 20
+kingslayerRank: 0
 matchHigherNinetyDay: true		# Must have higher 90 day and lower normal
 matchLowerNinetyDay: true
-maxGames: 9				# Maximum games for kingslayer
+maxGames: 11				# Maximum games for kingslayer
 maxDiff: 50
 mustMatch: 
 playerPending:
 #  - 9maxmut9
-  - madscan
-  - allanchessw
-  - kimcote
-  - kila01
-  - joelw
+#  - madscan
+#  - kimcote
+#  - allanchessw
+#  - kila01
+#  - joelw
 playerNotPending:
 teamOnly:
 teamPending:
 #  - ALCHEMY
 #  - All Stars Honoured
-#  - A Castle on the KING's Court # 2 // not good match ups
+  - THE BARMY ARMY
+  - A Castle on the KING's Court # 2 // not good match ups
   - Canadian Bacon
 #  - Chess Galaxy
 #  - Christ Our Redeemer
 #  - Conexão Macaxeira
 #  - Cowboys and Cowgirls of the Old West
 #  - DACII LIBERI
-#  - Dark Affair
+  - Dark Affair
 #  - The Fighting Warriors
 #  - The Force
-#  - IHS TEAM ITALIA
-#  - Immortal Kings
+  - IHS TEAM ITALIA
+  - Immortal Kings
+  - International Chess DOGS
 #  - INTRPIDUS
 #  - The Irish Pride
 #  - Italians Do It Better
 #  - Kings of the Castle
 #  - Knightmare
 #  - The Knights of the Crystal Castle  # pass 
-  - Knights of the Sceptered Isle # too lopsided
-#  - KNIGHTS TEMPLAR
+#  - Knights of the Sceptered Isle # too lopsided
+  - KNIGHTS TEMPLAR
   - LUCIFER'S ARMY
 #  - Masters of the game
 #  - Never Look Back                # 28/05/20 Cant match Kimcote
-  - Peace, Love, and Bunny Rabbits # 27/05/20 cant match 
+#  - Peace, Love, and Bunny Rabbits # 27/05/20 cant match 
 #  - Phoenix of the Kings Immortal
 #  - Placida 
 #  - Planet Chess
@@ -49,7 +51,7 @@ teamPending:
 #  - Salt and Light
 #  - SmAsHeDcRaBs
 #  - STONEDHENGE TRIBE
-#  - S.W.A.T.
+  - S.W.A.T.
 #  - TEAM ATTITUDE
   - TRITON
 #  - Underdogs

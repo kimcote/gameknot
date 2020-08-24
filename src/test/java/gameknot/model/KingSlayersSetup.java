@@ -25,6 +25,7 @@ public class KingSlayersSetup {
 			int rating=1400+(100*(i-1));
 			
 			player=new Player("KS"+i, rating, rating+50);
+			player.setCloseRating(true);
 			players.add(player);
 		}
 		

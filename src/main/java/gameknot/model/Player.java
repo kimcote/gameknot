@@ -18,19 +18,16 @@ public class Player {
 	public Player(String name, int rating, int ratingNinety) {
 		newPlayer(name,rating, "0");
 		this.ratingNinetyDay=ratingNinety;
-		this.closeRating=true;
 	}
 
 	public Player(String name, int rating, String games) {
 		newPlayer(name,rating, games);
-		this.closeRating=true;
     }
 
 	private void newPlayer(String name, int rating, String games) {
 		this.name = name;
         this.rating = rating;
 //        this.available=true;
-        this.closeRating=true;
         this.setMustMatch(false);
         
         if (StringUtils.contains(games, "+")) {
@@ -109,7 +106,7 @@ public class Player {
     private boolean mustMatch;
     
     public boolean isMatchable() {
-    	return !this.pending && !this.aboveGameLimit && !this.notThreeDay && !this.matched && this.closeRating;
+    	return !this.pending && this.closeRating && !this.aboveGameLimit && !this.matched;
     }
     
     public String getInfo() {

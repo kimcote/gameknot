@@ -157,6 +157,11 @@ public class MatchServicesTest extends KingSlayersSetup{
 		players.add(new Player("KS1",1400,1450));
 		players.add(new Player("KS2",1420,1450));
 		players.add(new Player("KS3",1440,1450));
+		
+		for (Player p:players) {
+			p.setCloseRating(true);
+		}
+		
 		kingslayers.setPlayers(players);
 		
 		List<OppositionTeam> oppositionTeams = new ArrayList<OppositionTeam>();
@@ -165,6 +170,10 @@ public class MatchServicesTest extends KingSlayersSetup{
 		players.add(new Player("Opp2",1430,1450));
 		players.add(new Player("Opp3",1410,1450));
 		oppositionTeams.add(new OppositionTeam("OppTeam1", 1, players));
+		
+		for (Player p:oppositionTeams.get(0).getPlayers()) {
+			p.setCloseRating(true);
+		}
 
 		assertEquals(3,oppositionTeams.get(0).getMatchablePlayers());
 		

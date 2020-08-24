@@ -36,8 +36,8 @@ public class OppositionTeam extends Team {
     private boolean wrongRank;
     
     public boolean isMatchable () {
-    	return !pending && !wrongRank && getPendingGames()<20;
-    		//&& (players==null || getMatchablePlayers()>1);
+    	return !pending && !wrongRank && getPendingGames()<20
+    		&& (players==null || getMatchablePlayers()>1);
     }
     public String getUnMatchableReasons () {
     	String s="";
@@ -54,17 +54,17 @@ public class OppositionTeam extends Team {
 //		+ " Pending Games="+leftPad(this.getPendingGames(),2)
 //					+ " Active Matches="+this.getActiveMatches() 
 		+ " Players:"
-		+ " Available="+leftPad(this.players.size(),3)
-		+ " Pending="+this.getPendingPlayers();
+		+ " Available="		+leftPad(this.players.size(),3)
+		+ " Pending="		+leftPad(this.getPendingPlayers(),2)
+		+ " CloseRating="	+leftPad(this.getCloseRatingPlayers(),2);
     }
     
     public String getInfoGameLimit() {
-    	return "\nRank=" + leftPad(this.getRank(),2) 
+    	return "Rank=" + leftPad(this.getRank(),2) 
 		+ " Team="+StringUtils.rightPad(this.getName(),45)
 		+ " Players:"
-		+ " AboveGameLimit=" + this.getAboveGameLimitPlayers()
-		+ " CloseRating="+leftPad(this.getCloseRatingPlayers(),2)
-		+ " Matchable="+this.getMatchablePlayers();
+		+ " AboveGameLimit=" +leftPad(this.getAboveGameLimitPlayers(),2)
+		+ " Matchable="		 +leftPad(this.getMatchablePlayers(),2);
     }
     public int getMatchablePlayers() {
 		int count=0;
@@ -153,6 +153,29 @@ public class OppositionTeam extends Team {
 		}
   
 		return count;
+	}
+	
+	public void assignCloseRating(KingSlayers ks, int maxDiff) {
+		
+		for (Player oppPlayer: this.getPlayers()) {
+			
+			if (!oppPlayer.isPending()) {
+				oppPlayer.assignCloseRating(ks, maxDiff);
+			}
+		}
+	}
+	
+	public void assignAboveGameLimit(int maxGames) {
+		
+		if (this.getPlayers() != null) { 
+		
+			for (Player oppPlayer: this.getPlayers()) {	
+				oppPlayer.setAboveGameLimit(!oppPlayer.isPending()
+										 && oppPlayer.isCloseRating()
+										 && !oppPlayer.isMatched()
+										 && oppPlayer.getActiveGames()>maxGames);
+			}
+		}
 	}
 
 //	public int getAvailablePlayers() {
