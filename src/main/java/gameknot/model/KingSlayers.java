@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import gameknot.services.MatchParameters;
+import gameknot.utils.HTMLReader;
 import lombok.Getter;
 
 @Component
@@ -134,5 +135,40 @@ public class KingSlayers extends Team{
 		}
 		
 		return count;
+	}
+	
+	public void assignRatingNinetyDay() {
+		for (Player player:this.getPlayers()) {
+	
+	        if (player.isMatchable()) {
+				int rating=HTMLReader.getRatingNinetyDay(player.getName());
+				player.setRatingNinetyDay(rating);
+			}
+			System.out.println(player.getInfo());
+		}
+	}
+	
+	public int getMaxGames() {
+		int maxGames=0;
+		
+		for (Player ksplayer: this.players) {
+			
+			if (ksplayer.isMatchable() && ksplayer.getActiveGames() > maxGames)
+				maxGames=ksplayer.getActiveGames();
+		}
+		
+		return maxGames;
+	}
+	
+	public int getMinGames() {
+		int minGames=99;
+		
+		for (Player ksplayer: this.players) {
+			
+			if (ksplayer.isMatchable() && ksplayer.getActiveGames() < minGames)
+				minGames=ksplayer.getActiveGames();
+		}
+		
+		return minGames;
 	}
 }

@@ -3,7 +3,6 @@ matchLower: false
 kingslayerRank: 0
 matchHigherNinetyDay: true		# Must have higher 90 day and lower normal
 matchLowerNinetyDay: true
-maxGames: 11				# Maximum games for kingslayer
 maxDiff: 50
 mustMatch: 
 playerPending:
@@ -26,7 +25,7 @@ teamPending:
 #  - Conexão Macaxeira
 #  - Cowboys and Cowgirls of the Old West
 #  - DACII LIBERI
-  - Dark Affair
+#  - Dark Affair
 #  - The Fighting Warriors
 #  - The Force
   - IHS TEAM ITALIA
@@ -35,7 +34,7 @@ teamPending:
 #  - INTRPIDUS
 #  - The Irish Pride
 #  - Italians Do It Better
-#  - Kings of the Castle
+  - Kings of the Castle
 #  - Knightmare
 #  - The Knights of the Crystal Castle  # pass 
 #  - Knights of the Sceptered Isle # too lopsided
@@ -49,7 +48,7 @@ teamPending:
 #  - Planet Chess
 #  - Romania
 #  - Salt and Light
-#  - SmAsHeDcRaBs
+  - SmAsHeDcRaBs
 #  - STONEDHENGE TRIBE
   - S.W.A.T.
 #  - TEAM ATTITUDE

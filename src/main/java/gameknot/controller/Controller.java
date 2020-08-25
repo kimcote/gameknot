@@ -67,7 +67,11 @@ public class Controller {
 		}
 		
 		kingslayers.setMustMatch(config.getMustMatch());
+		kingslayers.assignRatingNinetyDay();
 		
+		int maxGames=kingslayers.getMaxGames();
+		int minGames=kingslayers.getMinGames();
+				
 //		String html=myfileUtils.myReadFile("200205.xml");
 //		html+=myfileUtils.myReadFile("200212.xml");
 //		html+=myfileUtils.myReadFile("200219.xml");
@@ -76,14 +80,6 @@ public class Controller {
 //		htmlReader.getGameHistory(html,Month.FEBRUARY);
 //		System.exit(0);
 		
-		for (Player player:kingslayers.getPlayers()) {
-
-	        if (player.isMatchable()) {
-				int rating=HTMLReader.getRatingNinetyDay(player.getName());
-				player.setRatingNinetyDay(rating);
-			}
-			System.out.println(player.getInfo());
-		}
 		
 		/*
 		 * Get ladder teams
@@ -171,7 +167,7 @@ public class Controller {
 		/*
 		 * Only match with players at Game Limit and Higher 90 day rating 
 		 */
-		for (int games=0;games<=config.getMaxGames();games++) {
+		for (int games=minGames;games<=maxGames;games++) {
 			
 			System.out.println("\nActive Games Limit="+games);
 			
@@ -201,7 +197,7 @@ public class Controller {
 		/*
 		 * Only match with all players any rating within 50 
 		 */
-		for (int games=0;games<=config.getMaxGames();games++) {
+		for (int games=minGames;games<=maxGames;games++) {
 			
 			System.out.println("\nActive Games Limit="+games);
 			

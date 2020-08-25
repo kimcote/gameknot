@@ -19,7 +19,6 @@ public class Config {
 	private int kingslayerRank =0;
 	private boolean matchHigherNinetyDay;
 	private boolean matchLowerNinetyDay;
-	private int maxGames;
 	private int maxDiff;
 	private String mustMatch;
 	private List<String> playerPending;
