@@ -93,11 +93,11 @@ public class Player {
     	
     	for (Player ksPlayer: kingslayers.getPlayers()) {
             
-        	if (ksPlayer.isMatchable()
+        	if (!ksPlayer.isPending()
         	&& Math.abs(ksPlayer.getRating() - rating) <= maxDiff) {
 //        		System.out.println("CloseRating: ks="+ksPlayer.getRating()+ " v "+rating);
         		this.closeRating=true;
-        		break;
+        		ksPlayer.setCloseRating(true);
         	}
     	}
     }
@@ -131,10 +131,14 @@ public class Player {
     }
     
     public String getMatchInfo() {
-    	return "Name="+this.name
+    	return "Name="+rightpad(this.getName(),16)
     		  + " Rating=" + this.rating
     		  + " ("+this.ratingNinetyDay+")";
     }
+    
+    public String getInfoNoCloseRating() {
+		return getMatchInfo() + " No Close Rating";
+	}
     /*
      * Get best match for Player from opp Team
      */

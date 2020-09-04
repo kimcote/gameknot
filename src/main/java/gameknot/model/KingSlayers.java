@@ -140,7 +140,7 @@ public class KingSlayers extends Team{
 	public void assignRatingNinetyDay() {
 		for (Player player:this.getPlayers()) {
 	
-	        if (player.isMatchable()) {
+	        if (!player.isPending() && player.getRatingNinetyDay()==0) {
 				int rating=HTMLReader.getRatingNinetyDay(player.getName());
 				player.setRatingNinetyDay(rating);
 			}
@@ -153,7 +153,7 @@ public class KingSlayers extends Team{
 		
 		for (Player ksplayer: this.players) {
 			
-			if (ksplayer.isMatchable() && ksplayer.getActiveGames() > maxGames)
+			if (!ksplayer.isPending() && ksplayer.getActiveGames() > maxGames)
 				maxGames=ksplayer.getActiveGames();
 		}
 		
@@ -165,10 +165,19 @@ public class KingSlayers extends Team{
 		
 		for (Player ksplayer: this.players) {
 			
-			if (ksplayer.isMatchable() && ksplayer.getActiveGames() < minGames)
+			if (!ksplayer.isPending() && ksplayer.getActiveGames() < minGames)
 				minGames=ksplayer.getActiveGames();
 		}
 		
 		return minGames;
+	}
+
+	public void displayNoCloseRating() {
+		
+		for (Player ksplayer: this.players) {
+			
+			if (!ksplayer.isPending() && !ksplayer.isCloseRating())
+				System.out.println(ksplayer.getInfoNoCloseRating());
+		}	
 	}
 }

@@ -10,16 +10,23 @@ playerPending:
 #  - madscan
 #  - kimcote
 #  - allanchessw
+#  - darren6464
 #  - kila01
+#  - lesktheglut
 #  - joelw
 playerNotPending:
+#  - 9maxmut9
+#  - lesktheglut
+#  - tuveseve
+#  - olderchessplayer
 teamOnly:
 teamPending:
-#  - ALCHEMY
+  - ALCHEMY
 #  - All Stars Honoured
-  - THE BARMY ARMY
-  - A Castle on the KING's Court # 2 // not good match ups
-  - Canadian Bacon
+#  - THE BARMY ARMY
+#  - THE BLACK STALLION INTERNATIONAL CHESS TEAM
+#  - A Castle on the KING's Court # 2 // not good match ups
+#  - Canadian Bacon
 #  - Chess Galaxy
 #  - Christ Our Redeemer
 #  - Conexão Macaxeira
@@ -28,9 +35,9 @@ teamPending:
 #  - Dark Affair
 #  - The Fighting Warriors
 #  - The Force
-  - IHS TEAM ITALIA
-  - Immortal Kings
-  - International Chess DOGS
+#  - IHS TEAM ITALIA # until 30th Aug 
+#  - Immortal Kings
+#  - International Chess DOGS
 #  - INTRPIDUS
 #  - The Irish Pride
 #  - Italians Do It Better
@@ -38,8 +45,8 @@ teamPending:
 #  - Knightmare
 #  - The Knights of the Crystal Castle  # pass 
 #  - Knights of the Sceptered Isle # too lopsided
-  - KNIGHTS TEMPLAR
-  - LUCIFER'S ARMY
+#  - KNIGHTS TEMPLAR
+#  - LUCIFER'S ARMY
 #  - Masters of the game
 #  - Never Look Back                # 28/05/20 Cant match Kimcote
 #  - Peace, Love, and Bunny Rabbits # 27/05/20 cant match 
@@ -48,11 +55,11 @@ teamPending:
 #  - Planet Chess
 #  - Romania
 #  - Salt and Light
-  - SmAsHeDcRaBs
+#  - SmAsHeDcRaBs
 #  - STONEDHENGE TRIBE
-  - S.W.A.T.
+#  - S.W.A.T.
 #  - TEAM ATTITUDE
-  - TRITON
+#  - TRITON
 #  - Underdogs
 #  - The White Knight
 #  - Yeshua's Army

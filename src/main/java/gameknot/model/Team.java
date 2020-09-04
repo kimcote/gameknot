@@ -34,8 +34,8 @@ public class Team {
 	public void assignPlayers() {
 		this.players = JSONUtils.getPlayersFromTeamLink(this.link);
 		
-		for (Player p: this.players) {
-			p.setCloseRating(true);
-		}
+//		for (Player p: this.players) {
+//			p.setCloseRating(true);
+//		}
     }
 }

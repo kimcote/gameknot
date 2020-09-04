@@ -13,8 +13,6 @@ import gameknot.model.Ladder;
 import gameknot.model.OppositionTeam;
 import gameknot.model.Player;
 import gameknot.services.MatchParameters;
-import gameknot.utils.HTMLReader;
-import gameknot.utils.MyFileUtils;
 
 @Component
 public class Controller {
@@ -30,12 +28,6 @@ public class Controller {
     
     @Autowired
 	private Config config;
-    
-    @Autowired
-    private MyFileUtils myfileUtils;
-    
-    @Autowired
-    private HTMLReader htmlReader;
 	
 //    @PostConstruct
 	public void mainProcess() throws Exception {
@@ -71,6 +63,8 @@ public class Controller {
 		
 		int maxGames=kingslayers.getMaxGames();
 		int minGames=kingslayers.getMinGames();
+		
+		System.out.println("Games Range: Min="+minGames+" Max="+maxGames);
 				
 //		String html=myfileUtils.myReadFile("200205.xml");
 //		html+=myfileUtils.myReadFile("200212.xml");
@@ -163,7 +157,7 @@ public class Controller {
 //				System.exit(0);
 			}		
 		}	
-		
+		kingslayers.displayNoCloseRating();
 		/*
 		 * Only match with players at Game Limit and Higher 90 day rating 
 		 */
