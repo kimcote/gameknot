@@ -3,7 +3,7 @@ matchLower: false
 kingslayerRank: 0
 matchHigherNinetyDay: true		# Must have higher 90 day and lower normal
 matchLowerNinetyDay: true
-maxDiff: 50
+maxDiff: 30
 mustMatch: 
 playerPending:
 #  - 9maxmut9
@@ -14,52 +14,76 @@ playerPending:
 #  - kila01
 #  - lesktheglut
 #  - joelw
+#  - greenlord
+#  - mickey156
 playerNotPending:
+#  - allanchessw
+#  - abythomas1
+#  - gavish
+#  - kila01
+#  - larksnest
 #  - 9maxmut9
 #  - lesktheglut
 #  - tuveseve
 #  - olderchessplayer
-teamOnly:
+teamOnly: 
 teamPending:
-  - ALCHEMY
+#  - 64 Squares--7 Continents
+#  - ALCHEMY
 #  - All Stars Honoured
 #  - THE BARMY ARMY
 #  - THE BLACK STALLION INTERNATIONAL CHESS TEAM
 #  - A Castle on the KING's Court # 2 // not good match ups
-#  - Canadian Bacon
+#  - Caïssa Team
+  - Canadian Bacon
 #  - Chess Galaxy
+#  - Chess Friends 
+#  - Chess Masters of the World
+#  - Chess Players of the World
 #  - Christ Our Redeemer
-#  - Conexão Macaxeira
+  - Conexo Macaxeira
 #  - Cowboys and Cowgirls of the Old West
-#  - DACII LIBERI
+#  - CROATIAN KNIGHTS
+#  - THE CRUSADERS International Chess Team
+  - DACII LIBERI
 #  - Dark Affair
+#  - Die Lustigen - I fideli
+#  - DUTCH TEAM
+#  - The Empire Strikes Back
 #  - The Fighting Warriors
 #  - The Force
-#  - IHS TEAM ITALIA # until 30th Aug 
-#  - Immortal Kings
+  - IHS TEAM ITALIA # until 30th Aug 
+  - Immortal Kings
 #  - International Chess DOGS
 #  - INTRPIDUS
 #  - The Irish Pride
 #  - Italians Do It Better
-  - Kings of the Castle
+#  - Kings of the Castle
 #  - Knightmare
-#  - The Knights of the Crystal Castle  # pass 
-#  - Knights of the Sceptered Isle # too lopsided
+#  - The Knights of the Crystal Castle  # pass. sorry...gonna pass on this one
+  - Knights of the Sceptered Isle
 #  - KNIGHTS TEMPLAR
 #  - LUCIFER'S ARMY
-#  - Masters of the game
+#  - Masters of the game             # No players
+#  - Nambian Kings
 #  - Never Look Back                # 28/05/20 Cant match Kimcote
+#  - The Outcasts
 #  - Peace, Love, and Bunny Rabbits # 27/05/20 cant match 
 #  - Phoenix of the Kings Immortal
 #  - Placida 
 #  - Planet Chess
+#  - THE Red, White and Blue Chess Team
 #  - Romania
 #  - Salt and Light
-#  - SmAsHeDcRaBs
+  - SmAsHeDcRaBs
+#  - The Sneaky Knight Connection
+  - SPARTICUS
 #  - STONEDHENGE TRIBE
 #  - S.W.A.T.
 #  - TEAM ATTITUDE
+  - Team Portugal
+#  - To Win Just Once
 #  - TRITON
 #  - Underdogs
 #  - The White Knight
-#  - Yeshua's Army
+#  - Yeshua's Army  

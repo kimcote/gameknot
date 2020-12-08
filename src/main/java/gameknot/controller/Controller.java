@@ -218,6 +218,9 @@ public class Controller {
 		setAllPlayersWithinGameLimit();
 		
 		matchParams.run(config.getMaxDiff(), false); // any
+		
+		if (config.getMaxDiff()!=50) 
+			matchParams.run(50, false); // any
 	}
 	
 	private void setAllPlayersWithinGameLimit() {
