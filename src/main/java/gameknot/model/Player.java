@@ -98,6 +98,9 @@ public class Player {
 //        		System.out.println("CloseRating: ks="+ksPlayer.getRating()+ " v "+rating);
         		this.closeRating=true;
         		ksPlayer.setCloseRating(true);
+        		
+        		if (ksPlayer.getName().equals("9maxmut9"))
+        			System.out.println("9maxmut9 closerating="+this.getName());
         	}
     	}
     }
