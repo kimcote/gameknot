@@ -3,23 +3,31 @@ matchLower: false
 kingslayerRank: 0
 matchHigherNinetyDay: true		# Must have higher 90 day and lower normal
 matchLowerNinetyDay: true
-maxDiff: 30
+maxDiff: 25
 mustMatch: 
 playerPending:
 #  - 9maxmut9
+#  - allanchessw
 #  - madscan
 #  - kimcote
-#  - allanchessw
 #  - darren6464
+#  - gavish
 #  - kila01
 #  - lesktheglut
 #  - joelw
 #  - greenlord
 #  - mickey156
+#  - olderchessplayer
+#  - rave83
+#  - stevers
+#  - thatcha
 playerNotPending:
 #  - allanchessw
 #  - abythomas1
 #  - gavish
+#  - jfons
+#  - juhu
+#  - kimcote
 #  - kila01
 #  - larksnest
 #  - 9maxmut9
@@ -31,29 +39,34 @@ teamPending:
 #  - 64 Squares--7 Continents
 #  - ALCHEMY
 #  - All Stars Honoured
-#  - THE BARMY ARMY
-#  - THE BLACK STALLION INTERNATIONAL CHESS TEAM
+  - THE BARMY ARMY 
+#  - THE BLACK STALLI#ON INTERNATIONAL CHESS TEAM
 #  - A Castle on the KING's Court # 2 // not good match ups
 #  - Caïssa Team
-  - Canadian Bacon
+#  - Canadian Bacon
 #  - Chess Galaxy
 #  - Chess Friends 
+#  - chess warriors
 #  - Chess Masters of the World
 #  - Chess Players of the World
 #  - Christ Our Redeemer
-  - Conexo Macaxeira
+#  - Conexo Macaxeira
 #  - Cowboys and Cowgirls of the Old West
 #  - CROATIAN KNIGHTS
 #  - THE CRUSADERS International Chess Team
-  - DACII LIBERI
+#  - DACII LIBERI
 #  - Dark Affair
 #  - Die Lustigen - I fideli
 #  - DUTCH TEAM
 #  - The Empire Strikes Back
+#  - Equipe Quebec
 #  - The Fighting Warriors
 #  - The Force
-  - IHS TEAM ITALIA # until 30th Aug 
-  - Immortal Kings
+#  - Frechheit siegt
+#  - GLOBAL BOUNTY HUNTERS
+#  - The Grimsters
+#  - IHS TEAM ITALIA 
+#  - Immortal Kings
 #  - International Chess DOGS
 #  - INTRPIDUS
 #  - The Irish Pride
@@ -61,27 +74,32 @@ teamPending:
 #  - Kings of the Castle
 #  - Knightmare
 #  - The Knights of the Crystal Castle  # pass. sorry...gonna pass on this one
-  - Knights of the Sceptered Isle
+#  - Knights of the Sceptered Isle
 #  - KNIGHTS TEMPLAR
+#  - Lethal Pawns
 #  - LUCIFER'S ARMY
-#  - Masters of the game             # No players
+  - Masters of the game             # No players
+#  - Mind Crushers
 #  - Nambian Kings
 #  - Never Look Back                # 28/05/20 Cant match Kimcote
 #  - The Outcasts
-#  - Peace, Love, and Bunny Rabbits # 27/05/20 cant match 
+#  - Pagan Warriors
+  - Peace, Love, and Bunny Rabbits # 27/05/20 cant match 
 #  - Phoenix of the Kings Immortal
 #  - Placida 
-#  - Planet Chess
+  - Planet Chess
+#  - QuantumChoir
 #  - THE Red, White and Blue Chess Team
 #  - Romania
 #  - Salt and Light
-  - SmAsHeDcRaBs
+#  - Scotland Forever
+#  - SmAsHeDcRaBs
 #  - The Sneaky Knight Connection
-  - SPARTICUS
-#  - STONEDHENGE TRIBE
-#  - S.W.A.T.
+#  - SPARTICUS
+  - STONEDHENGE TRIBE
+#  - SWAT
 #  - TEAM ATTITUDE
-  - Team Portugal
+#  - Team Portugal
 #  - To Win Just Once
 #  - TRITON
 #  - Underdogs

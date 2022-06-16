@@ -137,7 +137,7 @@ public class HTMLReader {
 //		System.out.println("Table Element Count="+tableElements.size());
 //		System.out.println(tableElements.get(1).toString());
 
-		doc = Jsoup.parse(tableElements.get(1).toString());
+		doc = Jsoup.parse(tableElements.get(2).toString());
 		Elements trElements = doc.select("tr");
 
 //		System.out.println("tr Element Count="+trElements.size());

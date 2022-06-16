@@ -147,7 +147,7 @@ public class Controller {
 			
 			if (oppTeam.isMatchable()) { // at this point only pending or wrong rank
 				oppTeam.assignPlayers();
-				oppTeam.assignCloseRating(kingslayers, config.getMaxDiff());
+				oppTeam.assignCloseRating(kingslayers, 50);
 				
 				System.out.println(oppTeam.getInfoPlayers());
 				
