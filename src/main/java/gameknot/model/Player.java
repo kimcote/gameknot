@@ -75,7 +75,7 @@ public class Player {
     @Getter @Setter
     private boolean aboveGameLimit;
     
-    @Setter
+    @Getter @Setter
     private boolean notThreeDay;
     
     @Getter @Setter

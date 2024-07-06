@@ -159,7 +159,7 @@ public class OppositionTeam extends Team {
 		
 		for (Player oppPlayer: this.getPlayers()) {
 			
-			if (!oppPlayer.isPending()) {
+			if (!oppPlayer.isPending() && !oppPlayer.isNotThreeDay()) {
 				oppPlayer.assignCloseRating(ks, maxDiff);
 			}
 		}
