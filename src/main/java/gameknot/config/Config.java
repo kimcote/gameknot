@@ -14,9 +14,8 @@ import lombok.Data;
 @Data
 public class Config {
 
-	private boolean matchHigher ;
-	private boolean matchLower;
-	private int kingslayerRank =0;
+	private int matchLadderLowest;
+	private int matchLadderHighest;
 	private boolean matchHigherNinetyDay;
 	private boolean matchLowerNinetyDay;
 	private int maxDiff;
@@ -25,4 +24,5 @@ public class Config {
 	private List<String> playerNotPending;
 	private String teamOnly;
 	private List<String> teamPending;
+	private List<String> playerNotThreeDay;
 }

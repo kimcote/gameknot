@@ -93,15 +93,23 @@ public class Controller {
 				break;
 			}	
 		}
+		System.out.println("Kingslayers Rank="+kingslayers.getRank());
+		
+		if (config.getMatchLadderLowest()==0) {
+			config.setMatchLadderLowest(1);
+		}
+		
+		if (config.getMatchLadderHighest()==0) {
+			config.setMatchLadderHighest(kingslayers.getRank());
+		}
+		
+		System.out.println("Ladder Range: Min=" + config.getMatchLadderLowest() + " Max: "+config.getMatchLadderHighest());
+		
 		/*
 		 * Get teams with whom match has started within 3 days
 		 */
 //		ladder.getRecentMatches();
 		
-		if (config.getKingslayerRank()!=0)
-			kingslayers.setRank(config.getKingslayerRank());
-		
-		System.out.println("Kingslayers Rank="+kingslayers.getRank());
 		/*
 		 * If matching only to one team, set the rest to pending.
 		 */
@@ -115,8 +123,8 @@ public class Controller {
 		else {
 			for (OppositionTeam oppTeam: ladder.getOppositionTeams()) {
 				
-				oppTeam.setWrongRank(oppTeam.getRank()>kingslayers.getRank() && !config.isMatchLower()
-								  || oppTeam.getRank()<kingslayers.getRank() && !config.isMatchHigher());
+				oppTeam.setWrongRank(oppTeam.getRank()>config.getMatchLadderHighest()
+								  || oppTeam.getRank()<config.getMatchLadderLowest());
 				
 			}
 			
@@ -147,6 +155,11 @@ public class Controller {
 			
 			if (oppTeam.isMatchable()) { // at this point only pending or wrong rank
 				oppTeam.assignPlayers();
+				
+				for (String player: config.getPlayerNotThreeDay()) {
+					setPlayerNotThreeDay(player);
+				}
+				
 				oppTeam.assignCloseRating(kingslayers, 50);
 				
 				System.out.println(oppTeam.getInfoPlayers());
@@ -157,6 +170,9 @@ public class Controller {
 //				System.exit(0);
 			}		
 		}	
+		
+		
+		
 		kingslayers.displayNoCloseRating();
 		/*
 		 * Only match with players at Game Limit and Higher 90 day rating 
@@ -211,7 +227,7 @@ public class Controller {
 			}
 		}		
 		/*
-		 * Set all players
+		 * Set all players within game limit
 		 */
 		System.out.println("\nActive Games Limit=no Limit");
 		
