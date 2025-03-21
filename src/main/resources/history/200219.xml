@@ -1,0 +1,1236 @@
+<div id="list-games">
+	<table class="list">
+		<tbody>
+			<tr>
+				<td colspan="7" style="padding-bottom: 0px; white-space: nowrap; text-align: left;">
+					<em class="big">
+						Past team games for
+						<a href="/team.pl?chess=912">Kingslayers</a>
+					</em>
+					<span class="sml">(updated nightly)</span>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="7">
+					<div style="float: left; white-space: nowrap;" id="loading-wait">
+						<span class="span-wait" style="visibility: hidden;"></span>
+					</div>
+					<div style="float: right; white-space: nowrap;">
+						<table border="0" class="paginator">
+							<tbody>
+								<tr>
+									<td>Pages:&nbsp;</td>
+									<td>
+										<a href="javascript:void(0)" onclick="jump_to_page(1)" title="previous page">« previous</a>
+									</td>
+									<td>
+										<a href="javascript:void(0)" onclick="jump_to_page(0)" title="page #1">1</a>
+									</td>
+									<td>
+										<a href="javascript:void(0)" onclick="jump_to_page(1)" title="page #2">2</a>
+									</td>
+									<td>
+										<b>3</b>
+									</td>
+									<td>
+										<a href="javascript:void(0)" onclick="jump_to_page(3)" title="page #4">4</a>
+									</td>
+									<td>
+										<a href="javascript:void(0)" onclick="jump_to_page(4)" title="page #5">5</a>
+									</td>
+									<td>
+										<a href="javascript:void(0)" onclick="jump_to_page(5)" title="page #6">6</a>
+									</td>
+									<td>
+										<a href="javascript:void(0)" onclick="jump_to_page(6)" title="page #7">7</a>
+									</td>
+									<td>
+										<a href="javascript:void(0)" onclick="jump_to_page(7)" title="page #8">8</a>
+									</td>
+									<td>
+										<a href="javascript:void(0)" onclick="jump_to_page(8)" title="page #9">9</a>
+									</td>
+									<td>
+										<a href="javascript:void(0)" onclick="jump_to_page(9)" title="page #10">10</a>
+									</td>
+									<td>
+										<a href="javascript:void(0)" onclick="jump_to_page(10)" title="page #11">11</a>
+									</td>
+									<td> … </td>
+									<td>
+										<a href="javascript:void(0)" onclick="jump_to_page(646)" title="page #647">647</a>
+									</td>
+									<td>
+										<a href="javascript:void(0)" onclick="jump_to_page(3)" title="next page">next »</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th width="85">
+					<b style="margin: 0px 0px -4px -5px; display: block; background-color: transparent; line-height: 1px; background-position: initial initial; background-repeat: initial initial;">
+						<b class="rounded-corner" style="border-width: 0px 0px 0px 4px;"></b>
+						<b class="rounded-corner" style="border-width: 0px 0px 0px 2px;"></b>
+						<b class="rounded-corner" style="border-width: 0px 0px 0px 1px; height: 2px;"></b>
+					</b>
+					<a href="javascript:void(0)" onclick="sort_by_column(0)" onmouseover="pb_show(event,'Click to sort the table by this column')">Finished</a>
+					<span style="padding: 0px 4px;">↓</span>
+				</th>
+				<th width="160">
+					<a href="javascript:void(0)" onclick="sort_by_column(1)" onmouseover="pb_show(event,'Click to sort the table by this column')">Player</a>
+				</th>
+				<th width="60">
+					<a href="javascript:void(0)" onclick="sort_by_column(2)" onmouseover="pb_show(event,'Click to sort the table by this column')">Team's Rating</a>
+				</th>
+				<th width="160">
+					<a href="javascript:void(0)" onclick="sort_by_column(3)" onmouseover="pb_show(event,'Click to sort the table by this column')">Opponent</a>
+				</th>
+				<th width="60">
+					<a href="javascript:void(0)" onclick="sort_by_column(4)" onmouseover="pb_show(event,'Click to sort the table by this column')">O.team's rating</a>
+				</th>
+				<th width="180">
+					<a href="javascript:void(0)" onclick="sort_by_column(5)" onmouseover="pb_show(event,'Click to sort the table by this column')">Opposing team</a>
+				</th>
+				<th width="80">
+					<b style="margin: 0px -5px -4px 0px; display: block; background-color: transparent; line-height: 1px; background-position: initial initial; background-repeat: initial initial;">
+						<b class="rounded-corner" style="border-width: 0px 4px 0px 0px;"></b>
+						<b class="rounded-corner" style="border-width: 0px 2px 0px 0px;"></b>
+						<b class="rounded-corner" style="border-width: 0px 1px 0px 0px; height: 2px;"></b>
+					</b>
+					<a href="javascript:void(0)" onclick="sort_by_column(6)" onmouseover="pb_show(event,'Click to sort the table by this column')">Result</a>
+				</th>
+			</tr>
+			<tr class="evn_list">
+				<td>19-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-juhu" title="player is currently online">
+						<a href="/stats.pl?juhu" onmouseover="gk_mnst(event,'juhu')">juhu</a>
+				</td>
+				<td>1289</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-jxoneto" title="player is currently online">
+						<a href="/stats.pl?jxoneto" onmouseover="gk_mnst(event,'jxoneto')">jxoneto</a>
+				</td>
+				<td>1275</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1499">Kings of the Castle</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29359315,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29359315,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>19-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-lesktheglut" title="player is currently online">
+						<a href="/stats.pl?lesktheglut" onmouseover="gk_mnst(event,'lesktheglut')">lesktheglut</a>
+				</td>
+				<td>1279</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-kexall" title="player is currently online">
+						<a href="/stats.pl?kexall" onmouseover="gk_mnst(event,'kexall')">kexall</a>
+				</td>
+				<td>1283</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=432">Team Finland &amp; Int. Friends</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29311958,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29311958,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>19-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-olderchessplayer" title="player is currently online">
+						<a href="/stats.pl?olderchessplayer" onmouseover="gk_mnst(event,'olderchessplayer')">olderchessplayer</a>
+				</td>
+				<td>1268</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-paulatica" title="player is currently online">
+						<a href="/stats.pl?paulatica" onmouseover="gk_mnst(event,'paulatica')">paulatica</a>
+				</td>
+				<td>1328</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=990">Cricket-Match-Special</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29315480,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29315480,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>19-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-tuveseve" title="player is currently online">
+						<a href="/stats.pl?tuveseve" onmouseover="gk_mnst(event,'tuveseve')">tuveseve</a>
+				</td>
+				<td>1277</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-hblackef" title="player is currently online">
+						<a href="/stats.pl?hblackef" onmouseover="gk_mnst(event,'hblackef')">hblackef</a>
+				</td>
+				<td>1354</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1279"> The Knights of the Crystal Ca…</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29317409,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29317409,0)">draw
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>19-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-kila01" title="player is currently online">
+						<a href="/stats.pl?kila01" onmouseover="gk_mnst(event,'kila01')">kila01</a>
+				</td>
+				<td>1275</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-glenngilbert" title="player is currently online">
+						<a href="/stats.pl?glenngilbert" onmouseover="gk_mnst(event,'glenngilbert')">glenngilbert</a>
+				</td>
+				<td>1285</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1904">The Outcasts</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29339148,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29339148,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>19-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-juhu" title="player is currently online">
+						<a href="/stats.pl?juhu" onmouseover="gk_mnst(event,'juhu')">juhu</a>
+				</td>
+				<td>1285</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-jthorse" title="player is currently online">
+						<a href="/stats.pl?jthorse" onmouseover="gk_mnst(event,'jthorse')">jthorse</a>
+				</td>
+				<td>1311</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1592">Never Look Back</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29391048,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29391048,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>18-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-thatcha" title="player is currently online">
+						<a href="/stats.pl?thatcha" onmouseover="gk_mnst(event,'thatcha')">thatcha</a>
+				</td>
+				<td>1274</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-knightmoves68" title="player is currently online">
+						<a href="/stats.pl?knightmoves68" onmouseover="gk_mnst(event,'knightmoves68')">knightmoves68</a>
+				</td>
+				<td>1282</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=882">The Empire Strikes Back</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29322708,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29322708,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>18-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-greenlord" title="player is currently online">
+						<a href="/stats.pl?greenlord" onmouseover="gk_mnst(event,'greenlord')">greenlord</a>
+				</td>
+				<td>1284</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-da_andrea" title="player is currently online">
+						<a href="/stats.pl?da_andrea" onmouseover="gk_mnst(event,'da_andrea')">da_andrea</a>
+				</td>
+				<td>1263</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=373">Italians Do It Better</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29374436,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29374436,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>18-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-evilgm" title="player is currently online">
+						<a href="/stats.pl?evilgm" onmouseover="gk_mnst(event,'evilgm')">evilgm</a>
+				</td>
+				<td>1295</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-peeuukoo" title="player is currently online">
+						<a href="/stats.pl?peeuukoo" onmouseover="gk_mnst(event,'peeuukoo')">peeuukoo</a>
+				</td>
+				<td>1330</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=432">Team Finland &amp; Int. Friends</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29319539,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29319539,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>18-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-rave83" title="player is currently online">
+						<a href="/stats.pl?rave83" onmouseover="gk_mnst(event,'rave83')">rave83</a>
+				</td>
+				<td>1283</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-braindead54" title="player is currently online">
+						<a href="/stats.pl?braindead54" onmouseover="gk_mnst(event,'braindead54')">braindead54</a>
+				</td>
+				<td>1273</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1639">All Stars Honoured  </a>
+				</td>
+				<td>
+					<a href="javascript:popa(29317693,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29317693,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>18-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="" src="/img/online.svg" id="onlsts-darren6464" title="player is currently online">
+						<a href="/stats.pl?darren6464" onmouseover="gk_mnst(event,'darren6464')">darren6464</a>
+				</td>
+				<td>1273</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-eeusman" title="player is currently online">
+						<a href="/stats.pl?eeusman" onmouseover="gk_mnst(event,'eeusman')">eeusman</a>
+				</td>
+				<td>1287</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=2092">🌞🐉STONEDHENGE TRIBE🐉�…</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29380615,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29380615,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>17-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-thatcha" title="player is currently online">
+						<a href="/stats.pl?thatcha" onmouseover="gk_mnst(event,'thatcha')">thatcha</a>
+				</td>
+				<td>1262</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-sam4u2004w" title="player is currently online">
+						<a href="/stats.pl?sam4u2004w" onmouseover="gk_mnst(event,'sam4u2004w')">sam4u2004w</a>
+				</td>
+				<td>1216</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1071">Peace, Love, and Bunny Rabbits</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29307828,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29307828,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>17-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-ehenrymay" title="player is currently online">
+						<a href="/stats.pl?ehenrymay" onmouseover="gk_mnst(event,'ehenrymay')">ehenrymay</a>
+				</td>
+				<td>1253</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-mlenurse" title="player is currently online">
+						<a href="/stats.pl?mlenurse" onmouseover="gk_mnst(event,'mlenurse')">mlenurse</a>
+				</td>
+				<td>1282</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=846">~✠~ KNIGHTS TEMPLAR ~✠~ </a>
+				</td>
+				<td>
+					<a href="javascript:popa(29296159,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29296159,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>17-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-mistog" title="player is currently online">
+						<a href="/stats.pl?mistog" onmouseover="gk_mnst(event,'mistog')">mistog</a>
+				</td>
+				<td>1241</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-sale982" title="player is currently online">
+						<a href="/stats.pl?sale982" onmouseover="gk_mnst(event,'sale982')">sale982</a>
+				</td>
+				<td>1316</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=906">CROATIAN KNIGHTS</a>
+				</td>
+				<td>
+					<a href="javascript:popa(28530760,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,28530760,0)">draw
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>17-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="" src="/img/online.svg" id="onlsts-gavish" title="player is currently online">
+						<a href="/stats.pl?gavish" onmouseover="gk_mnst(event,'gavish')">gavish</a>
+				</td>
+				<td>1239</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-mahoutsoukai" title="player is currently online">
+						<a href="/stats.pl?mahoutsoukai" onmouseover="gk_mnst(event,'mahoutsoukai')">mahoutsoukai</a>
+				</td>
+				<td>1297</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=846">~✠~ KNIGHTS TEMPLAR ~✠~ </a>
+				</td>
+				<td>
+					<a href="javascript:popa(29373632,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29373632,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>17-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-allanchessw" title="player is currently online">
+						<a href="/stats.pl?allanchessw" onmouseover="gk_mnst(event,'allanchessw')">allanchessw</a>
+				</td>
+				<td>1248</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-blackkn" title="player is currently online">
+						<a href="/stats.pl?blackkn" onmouseover="gk_mnst(event,'blackkn')">blackkn</a>
+				</td>
+				<td>1218</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1508">TRITON</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29336402,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29336402,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>17-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-mickey156" title="player is currently online">
+						<a href="/stats.pl?mickey156" onmouseover="gk_mnst(event,'mickey156')">mickey156</a>
+				</td>
+				<td>1260</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-jimmac" title="player is currently online">
+						<a href="/stats.pl?jimmac" onmouseover="gk_mnst(event,'jimmac')">jimmac</a>
+				</td>
+				<td>1300</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1011">Scotland Forever</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29206953,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29206953,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>17-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-evilgm" title="player is currently online">
+						<a href="/stats.pl?evilgm" onmouseover="gk_mnst(event,'evilgm')">evilgm</a>
+				</td>
+				<td>1269</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-hlchess" title="player is currently online">
+						<a href="/stats.pl?hlchess" onmouseover="gk_mnst(event,'hlchess')">hlchess</a>
+				</td>
+				<td>1285</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1071">Peace, Love, and Bunny Rabbits</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29307664,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29307664,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>16-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-jtind" title="player is currently online">
+						<a href="/stats.pl?jtind" onmouseover="gk_mnst(event,'jtind')">jtind</a>
+				</td>
+				<td>1279</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-hewkn" title="player is currently online">
+						<a href="/stats.pl?hewkn" onmouseover="gk_mnst(event,'hewkn')">hewkn</a>
+				</td>
+				<td>1216</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=422">Scandinavian Team</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29029994,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29029994,0)">draw
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>16-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-evilgm" title="player is currently online">
+						<a href="/stats.pl?evilgm" onmouseover="gk_mnst(event,'evilgm')">evilgm</a>
+				</td>
+				<td>1281</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-hlchess" title="player is currently online">
+						<a href="/stats.pl?hlchess" onmouseover="gk_mnst(event,'hlchess')">hlchess</a>
+				</td>
+				<td>1295</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1071">Peace, Love, and Bunny Rabbits</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29307665,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29307665,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>16-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-jfons" title="player is currently online">
+						<a href="/stats.pl?jfons" onmouseover="gk_mnst(event,'jfons')">jfons</a>
+				</td>
+				<td>1270</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-stabheuschrecke" title="player is currently online">
+						<a href="/stats.pl?stabheuschrecke" onmouseover="gk_mnst(event,'stabheuschrecke')">stabheuschrecke</a>
+				</td>
+				<td>1329</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=2094">Chess Galaxy</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29209497,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29209497,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>16-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-pawnish" title="player is currently online">
+						<a href="/stats.pl?pawnish" onmouseover="gk_mnst(event,'pawnish')">pawnish</a>
+				</td>
+				<td>1258</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-jouni" title="player is currently online">
+						<a href="/stats.pl?jouni" onmouseover="gk_mnst(event,'jouni')">jouni</a>
+				</td>
+				<td>1361</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=432">Team Finland &amp; Int. Friends</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29311960,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29311960,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>16-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="" src="/img/online.svg" id="onlsts-kimcote" title="player is currently online">
+						<a href="/stats.pl?kimcote" onmouseover="gk_mnst(event,'kimcote')">kimcote</a>
+				</td>
+				<td>1244</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-yorgosdest" title="player is currently online">
+						<a href="/stats.pl?yorgosdest" onmouseover="gk_mnst(event,'yorgosdest')">yorgosdest</a>
+				</td>
+				<td>1250</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1592">Never Look Back</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29324047,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29324047,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>15-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-pawnish" title="player is currently online">
+						<a href="/stats.pl?pawnish" onmouseover="gk_mnst(event,'pawnish')">pawnish</a>
+				</td>
+				<td>1233</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-ronlumm" title="player is currently online">
+						<a href="/stats.pl?ronlumm" onmouseover="gk_mnst(event,'ronlumm')">ronlumm</a>
+				</td>
+				<td>1268</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=242">▄▀|GLOBAL BOUNTY HUNTERS|�…</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29273901,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29273901,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>15-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-evilgm" title="player is currently online">
+						<a href="/stats.pl?evilgm" onmouseover="gk_mnst(event,'evilgm')">evilgm</a>
+				</td>
+				<td>1222</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-peeuukoo" title="player is currently online">
+						<a href="/stats.pl?peeuukoo" onmouseover="gk_mnst(event,'peeuukoo')">peeuukoo</a>
+				</td>
+				<td>1360</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=432">Team Finland &amp; Int. Friends</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29319538,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29319538,0)">draw
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>15-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-jonah1938" title="player is currently online">
+						<a href="/stats.pl?jonah1938" onmouseover="gk_mnst(event,'jonah1938')">jonah1938</a>
+				</td>
+				<td>1218</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="" src="/img/online.svg" id="onlsts-elliscaripops" title="player is currently online">
+						<a href="/stats.pl?elliscaripops" onmouseover="gk_mnst(event,'elliscaripops')">elliscaripops</a>
+				</td>
+				<td>1277</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1684">The White Knight</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29327631,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29327631,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>14-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-jtind" title="player is currently online">
+						<a href="/stats.pl?jtind" onmouseover="gk_mnst(event,'jtind')">jtind</a>
+				</td>
+				<td>1226</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-thebeck" title="player is currently online">
+						<a href="/stats.pl?thebeck" onmouseover="gk_mnst(event,'thebeck')">thebeck</a>
+				</td>
+				<td>1238</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1071">Peace, Love, and Bunny Rabbits</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29227460,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29227460,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>14-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-allanchessw" title="player is currently online">
+						<a href="/stats.pl?allanchessw" onmouseover="gk_mnst(event,'allanchessw')">allanchessw</a>
+				</td>
+				<td>1215</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-wo_saopaulo" title="player is currently online">
+						<a href="/stats.pl?wo_saopaulo" onmouseover="gk_mnst(event,'wo_saopaulo')">wo_saopaulo</a>
+				</td>
+				<td>1228</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=580">The Sneaky Knight Connection</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29344145,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29344145,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>14-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-mickey156" title="player is currently online">
+						<a href="/stats.pl?mickey156" onmouseover="gk_mnst(event,'mickey156')">mickey156</a>
+				</td>
+				<td>1226</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-rtyfd" title="player is currently online">
+						<a href="/stats.pl?rtyfd" onmouseover="gk_mnst(event,'rtyfd')">rtyfd</a>
+				</td>
+				<td>1312</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1592">Never Look Back</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29324045,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29324045,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>14-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-stevers" title="player is currently online">
+						<a href="/stats.pl?stevers" onmouseover="gk_mnst(event,'stevers')">stevers</a>
+				</td>
+				<td>1234</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-gedmac57" title="player is currently online">
+						<a href="/stats.pl?gedmac57" onmouseover="gk_mnst(event,'gedmac57')">gedmac57</a>
+				</td>
+				<td>1354</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1499">Kings of the Castle</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29378523,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29378523,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>14-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-stevers" title="player is currently online">
+						<a href="/stats.pl?stevers" onmouseover="gk_mnst(event,'stevers')">stevers</a>
+				</td>
+				<td>1220</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-gedmac57" title="player is currently online">
+						<a href="/stats.pl?gedmac57" onmouseover="gk_mnst(event,'gedmac57')">gedmac57</a>
+				</td>
+				<td>1368</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1499">Kings of the Castle</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29378524,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29378524,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>14-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-juhu" title="player is currently online">
+						<a href="/stats.pl?juhu" onmouseover="gk_mnst(event,'juhu')">juhu</a>
+				</td>
+				<td>1205</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-jxoneto" title="player is currently online">
+						<a href="/stats.pl?jxoneto" onmouseover="gk_mnst(event,'jxoneto')">jxoneto</a>
+				</td>
+				<td>1378</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1499">Kings of the Castle</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29359314,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29359314,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>14-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-juhu" title="player is currently online">
+						<a href="/stats.pl?juhu" onmouseover="gk_mnst(event,'juhu')">juhu</a>
+				</td>
+				<td>1211</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-mauzis" title="player is currently online">
+						<a href="/stats.pl?mauzis" onmouseover="gk_mnst(event,'mauzis')">mauzis</a>
+				</td>
+				<td>1208</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1508">TRITON</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29326289,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29326289,0)">draw
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>13-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-kila01" title="player is currently online">
+						<a href="/stats.pl?kila01" onmouseover="gk_mnst(event,'kila01')">kila01</a>
+				</td>
+				<td>1211</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-mel-lo" title="player is currently online">
+						<a href="/stats.pl?mel-lo" onmouseover="gk_mnst(event,'mel-lo')">mel-lo</a>
+				</td>
+				<td>1260</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1658">Christ Our Redeemer</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29331551,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29331551,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>13-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-jonah1938" title="player is currently online">
+						<a href="/stats.pl?jonah1938" onmouseover="gk_mnst(event,'jonah1938')">jonah1938</a>
+				</td>
+				<td>1220</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-bpogo3" title="player is currently online">
+						<a href="/stats.pl?bpogo3" onmouseover="gk_mnst(event,'bpogo3')">bpogo3</a>
+				</td>
+				<td>1217</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=554">THE Red, White and Blue Chess …</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29302734,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29302734,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>13-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-joelw" title="player is currently online">
+						<a href="/stats.pl?joelw" onmouseover="gk_mnst(event,'joelw')">joelw</a>
+				</td>
+				<td>1230</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-deslekke" title="player is currently online">
+						<a href="/stats.pl?deslekke" onmouseover="gk_mnst(event,'deslekke')">deslekke</a>
+				</td>
+				<td>1283</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=846">~✠~ KNIGHTS TEMPLAR ~✠~ </a>
+				</td>
+				<td>
+					<a href="javascript:popa(29289354,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29289354,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>13-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-juhu" title="player is currently online">
+						<a href="/stats.pl?juhu" onmouseover="gk_mnst(event,'juhu')">juhu</a>
+				</td>
+				<td>1218</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-icenlady" title="player is currently online">
+						<a href="/stats.pl?icenlady" onmouseover="gk_mnst(event,'icenlady')">icenlady</a>
+				</td>
+				<td>1320</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=822">~Canadian Bacon~</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29378489,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29378489,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>13-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-juhu" title="player is currently online">
+						<a href="/stats.pl?juhu" onmouseover="gk_mnst(event,'juhu')">juhu</a>
+				</td>
+				<td>1205</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-icenlady" title="player is currently online">
+						<a href="/stats.pl?icenlady" onmouseover="gk_mnst(event,'icenlady')">icenlady</a>
+				</td>
+				<td>1333</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=822">~Canadian Bacon~</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29378490,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29378490,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>13-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-pawnish" title="player is currently online">
+						<a href="/stats.pl?pawnish" onmouseover="gk_mnst(event,'pawnish')">pawnish</a>
+				</td>
+				<td>1212</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-dmaestro" title="player is currently online">
+						<a href="/stats.pl?dmaestro" onmouseover="gk_mnst(event,'dmaestro')">dmaestro</a>
+				</td>
+				<td>1219</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=580">The Sneaky Knight Connection</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29304133,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29304133,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>13-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-marvgiff" title="player is currently online">
+						<a href="/stats.pl?marvgiff" onmouseover="gk_mnst(event,'marvgiff')">marvgiff</a>
+				</td>
+				<td>1222</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-jsalb5" title="player is currently online">
+						<a href="/stats.pl?jsalb5" onmouseover="gk_mnst(event,'jsalb5')">jsalb5</a>
+				</td>
+				<td>1318</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=822">~Canadian Bacon~</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29212025,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29212025,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>13-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-thatcha" title="player is currently online">
+						<a href="/stats.pl?thatcha" onmouseover="gk_mnst(event,'thatcha')">thatcha</a>
+				</td>
+				<td>1230</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-biblio5" title="player is currently online">
+						<a href="/stats.pl?biblio5" onmouseover="gk_mnst(event,'biblio5')">biblio5</a>
+				</td>
+				<td>1319</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1499">Kings of the Castle</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29308936,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29308936,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>13-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-stevers" title="player is currently online">
+						<a href="/stats.pl?stevers" onmouseover="gk_mnst(event,'stevers')">stevers</a>
+				</td>
+				<td>1238</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-here_i_go_again" title="player is currently online">
+						<a href="/stats.pl?here_i_go_again" onmouseover="gk_mnst(event,'here_i_go_again')">here_i_go_again</a>
+				</td>
+				<td>1195</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=580">The Sneaky Knight Connection</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29344147,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29344147,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>13-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-abythomas1" title="player is currently online">
+						<a href="/stats.pl?abythomas1" onmouseover="gk_mnst(event,'abythomas1')">abythomas1</a>
+				</td>
+				<td>1228</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-ledzepp" title="player is currently online">
+						<a href="/stats.pl?ledzepp" onmouseover="gk_mnst(event,'ledzepp')">ledzepp</a>
+				</td>
+				<td>1325</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1071">Peace, Love, and Bunny Rabbits</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29299514,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29299514,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>12-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-allanchessw" title="player is currently online">
+						<a href="/stats.pl?allanchessw" onmouseover="gk_mnst(event,'allanchessw')">allanchessw</a>
+				</td>
+				<td>1236</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-blackkn" title="player is currently online">
+						<a href="/stats.pl?blackkn" onmouseover="gk_mnst(event,'blackkn')">blackkn</a>
+				</td>
+				<td>1219</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1508">TRITON</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29336401,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29336401,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>12-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="" src="/img/online.svg" id="onlsts-gavish" title="player is currently online">
+						<a href="/stats.pl?gavish" onmouseover="gk_mnst(event,'gavish')">gavish</a>
+				</td>
+				<td>1226</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-mahoutsoukai" title="player is currently online">
+						<a href="/stats.pl?mahoutsoukai" onmouseover="gk_mnst(event,'mahoutsoukai')">mahoutsoukai</a>
+				</td>
+				<td>1263</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=846">~✠~ KNIGHTS TEMPLAR ~✠~ </a>
+				</td>
+				<td>
+					<a href="javascript:popa(29373631,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29373631,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>12-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-stevers" title="player is currently online">
+						<a href="/stats.pl?stevers" onmouseover="gk_mnst(event,'stevers')">stevers</a>
+				</td>
+				<td>1235</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-sohocafe" title="player is currently online">
+						<a href="/stats.pl?sohocafe" onmouseover="gk_mnst(event,'sohocafe')">sohocafe</a>
+				</td>
+				<td>1262</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=2009">Cowboys and Cowgirls of the Ol…</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29240544,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29240544,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>12-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-rave83" title="player is currently online">
+						<a href="/stats.pl?rave83" onmouseover="gk_mnst(event,'rave83')">rave83</a>
+				</td>
+				<td>1245</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-jshort" title="player is currently online">
+						<a href="/stats.pl?jshort" onmouseover="gk_mnst(event,'jshort')">jshort</a>
+				</td>
+				<td>1334</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1989">🔱LUCIFER'S ARMY🔱</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29357294,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29357294,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>12-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-rave83" title="player is currently online">
+						<a href="/stats.pl?rave83" onmouseover="gk_mnst(event,'rave83')">rave83</a>
+				</td>
+				<td>1253</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-jshort" title="player is currently online">
+						<a href="/stats.pl?jshort" onmouseover="gk_mnst(event,'jshort')">jshort</a>
+				</td>
+				<td>1326</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1989">🔱LUCIFER'S ARMY🔱</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29357293,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29357293,0)">won
+					</a>
+				</td>
+			</tr>
+			<tr class="evn_list">
+				<td>12-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-joelw" title="player is currently online">
+						<a href="/stats.pl?joelw" onmouseover="gk_mnst(event,'joelw')">joelw</a>
+				</td>
+				<td>1240</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-deslekke" title="player is currently online">
+						<a href="/stats.pl?deslekke" onmouseover="gk_mnst(event,'deslekke')">deslekke</a>
+				</td>
+				<td>1169</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=846">~✠~ KNIGHTS TEMPLAR ~✠~ </a>
+				</td>
+				<td>
+					<a href="javascript:popa(29289355,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29289355,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr class="odd_list">
+				<td>12-Feb-20</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-marvgiff" title="player is currently online">
+						<a href="/stats.pl?marvgiff" onmouseover="gk_mnst(event,'marvgiff')">marvgiff</a>
+				</td>
+				<td>1253</td>
+				<td style="text-align: left;">
+					<img class="img-onl" style="display: none;" src="/img/online.svg" id="onlsts-magicq" title="player is currently online">
+						<a href="/stats.pl?magicq" onmouseover="gk_mnst(event,'magicq')">magicq</a>
+				</td>
+				<td>1307</td>
+				<td style="text-align: left;">
+					<a href="/team.pl?chess=1499">Kings of the Castle</a>
+				</td>
+				<td>
+					<a href="javascript:popa(29317404,0)">
+						<img src="/img/chessboard1.svg" class="imgs" style="width: 13px; height: 13px; margin: -2px 4px 0 2px;" onmouseover="gk_popbd(event,29317404,0)">lost
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="7" style="text-align: left;">
+					<table border="0" class="paginator">
+						<tbody>
+							<tr>
+								<td>Pages:&nbsp;</td>
+								<td>
+									<a href="javascript:void(0)" onclick="jump_to_page(1)" title="previous page">« previous</a>
+								</td>
+								<td>
+									<a href="javascript:void(0)" onclick="jump_to_page(0)" title="page #1">1</a>
+								</td>
+								<td>
+									<a href="javascript:void(0)" onclick="jump_to_page(1)" title="page #2">2</a>
+								</td>
+								<td>
+									<b>3</b>
+								</td>
+								<td>
+									<a href="javascript:void(0)" onclick="jump_to_page(3)" title="page #4">4</a>
+								</td>
+								<td>
+									<a href="javascript:void(0)" onclick="jump_to_page(4)" title="page #5">5</a>
+								</td>
+								<td>
+									<a href="javascript:void(0)" onclick="jump_to_page(5)" title="page #6">6</a>
+								</td>
+								<td>
+									<a href="javascript:void(0)" onclick="jump_to_page(6)" title="page #7">7</a>
+								</td>
+								<td>
+									<a href="javascript:void(0)" onclick="jump_to_page(7)" title="page #8">8</a>
+								</td>
+								<td>
+									<a href="javascript:void(0)" onclick="jump_to_page(8)" title="page #9">9</a>
+								</td>
+								<td>
+									<a href="javascript:void(0)" onclick="jump_to_page(9)" title="page #10">10</a>
+								</td>
+								<td>
+									<a href="javascript:void(0)" onclick="jump_to_page(10)" title="page #11">11</a>
+								</td>
+								<td> … </td>
+								<td>
+									<a href="javascript:void(0)" onclick="jump_to_page(646)" title="page #647">647</a>
+								</td>
+								<td>
+									<a href="javascript:void(0)" onclick="jump_to_page(3)" title="next page">next »</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="7" style="text-align: left;">
+					<div class="pp dim">
+						<em class="sml">Legend:</em>
+						<br>
+							&nbsp;
+							<img class="img-sh" style="margin: 0;" src="/img/computer-analysis1.svg">
+								= post-game computer analysis available
+								<br>
+									&nbsp;
+									<img class="imgs" style="margin: 0; width: 13px; height: 13px;" src="/img/cross1.svg">
+										= game cancelled or deleted (without a
+										<a href="/premium.pl">premium membership</a>
+										, games older than 30 days can be automatically deleted)
+										<br>
+											&nbsp;
+											<img class="imgs" style="margin: 0; width: 13px; height: 13px;" src="/img/lock1.svg">
+												= games older than 30 days are only accessible by
+												<a href="/premium.pl">premium membership</a>
+												subscribers
+												<br>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

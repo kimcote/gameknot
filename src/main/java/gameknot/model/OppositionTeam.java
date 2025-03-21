@@ -1,0 +1,197 @@
+package gameknot.model;
+
+import java.util.List;
+import org.apache.commons.lang3.StringUtils;
+
+import org.springframework.stereotype.Component;
+
+import gameknot.utils.JSONUtils;
+import lombok.Getter;
+import lombok.Setter;
+
+@Component
+public class OppositionTeam extends Team {
+	
+	public OppositionTeam() {}
+
+    public OppositionTeam(String name, int rank, List<Player> players) {
+        this.name = name.replaceAll("[^a-zA-Z0-9 ,']", "").trim();
+        this.rank=rank;
+        this.players = players;
+    }
+    
+    public OppositionTeam(String name, int rank, String link) {
+        this.name = name.replaceAll("[^a-zA-Z0-9 ,']", "").trim();
+        this.rank=rank;
+        this.link=link;
+    }
+    
+    @Getter @Setter
+    private String name;
+    
+    @Setter
+    private boolean pending;
+    
+    @Setter
+    private boolean wrongRank;
+    
+    public boolean isMatchable () {
+    	return !pending && !wrongRank && getPendingGames()<20
+    		&& (players==null || getMatchablePlayers()>1);
+    }
+    public String getUnMatchableReasons () {
+    	String s="";
+    	if (!pending) s+="Pending";
+    	if (!wrongRank) s+=" WrongRank";
+    	if (getPendingGames()>=20) s+=" PendingGames="+getPendingGames();
+    	if (getMatchablePlayers()<2) s+=" Matchable PLayers="+getMatchablePlayers();
+    	return s;
+    }
+    
+    public String getInfoPlayers() {
+    	return "Rank=" + leftPad(this.getRank(),2) 
+		+ " Team="+StringUtils.rightPad(this.getName(),45)
+//		+ " Pending Games="+leftPad(this.getPendingGames(),2)
+//					+ " Active Matches="+this.getActiveMatches() 
+		+ " Players:"
+		+ " Available="		+leftPad(this.players.size(),3)
+		+ " Pending="		+leftPad(this.getPendingPlayers(),2)
+		+ " CloseRating="	+leftPad(this.getCloseRatingPlayers(),2);
+    }
+    
+    public String getInfoGameLimit() {
+    	return "Rank=" + leftPad(this.getRank(),2) 
+		+ " Team="+StringUtils.rightPad(this.getName(),45)
+		+ " Players:"
+		+ " AboveGameLimit=" +leftPad(this.getAboveGameLimitPlayers(),2)
+		+ " Matchable="		 +leftPad(this.getMatchablePlayers(),2);
+    }
+    public int getMatchablePlayers() {
+		int count=0;
+		
+		if (players != null) { 
+
+			for (Player player:players) { 
+			
+				if (player.isMatchable()) count++;
+			}
+		}
+  
+		return count;
+	}
+    
+    public int getCloseRatingPlayers() {
+		int count=0;
+		
+		if (players != null) { 
+
+			for (Player player:players) { 
+			
+				if (player.isCloseRating()) count++;
+			}
+		}
+  
+		return count;
+	}
+    
+    public int getPendingPlayers() {
+		int count=0;
+		
+		if (players != null) { 
+
+			for (Player player:players) { 
+			
+				if (player.isPending()) count++;
+			}
+		}
+  
+		return count;
+	}
+    
+    public int getPendingGames() {
+    	
+    	int count=0;
+		
+		if (players != null) { 
+
+			for (Player player:players) { 
+			
+				count=count+player.getPendingGames();
+			}
+		}
+  
+		return count;
+    }
+    
+    public void assignPlayers() {
+		this.players = JSONUtils.getPlayersFromTeamLink(this.link);
+    }
+
+	public int getAboveGameLimitPlayers() {
+		int count=0;
+		
+		if (players != null) { 
+
+			for (Player player:players) { 
+			
+				if (player.isAboveGameLimit()) count++;
+			}
+		}
+  
+		return count;
+	}
+
+	public int getMatchedPlayers() {
+		int count=0;
+		
+		if (players != null) { 
+
+			for (Player player:players) { 
+			
+				if (player.isMatched()) count++;
+			}
+		}
+  
+		return count;
+	}
+	
+	public void assignCloseRating(KingSlayers ks, int maxDiff) {
+		
+		for (Player oppPlayer: this.getPlayers()) {
+			
+			if (!oppPlayer.isPending() && !oppPlayer.isNotThreeDay()) {
+				oppPlayer.assignCloseRating(ks, maxDiff);
+			}
+		}
+	}
+	
+	public void assignAboveGameLimit(int maxGames) {
+		
+		if (this.getPlayers() != null) { 
+		
+			for (Player oppPlayer: this.getPlayers()) {	
+				oppPlayer.setAboveGameLimit(!oppPlayer.isPending()
+										 && oppPlayer.isCloseRating()
+										 && !oppPlayer.isMatched()
+										 && oppPlayer.getActiveGames()>maxGames);
+			}
+		}
+	}
+
+//	public int getAvailablePlayers() {
+//		int count=0;
+//		
+//		if (players != null) { 
+//
+//			for (Player player:players) { 
+//			
+//				if (player.isAvailable()) count++;
+//			}
+//		}
+//  
+//		return count;
+//	}
+	private String leftPad(int i, int len) {
+		return StringUtils.leftPad(String.valueOf(i), len);
+	}
+}
